@@ -19,34 +19,30 @@
             primaryLight: '#1f2d3d',
             accent: '#00cba9',
             accentLight: '#4fe8cb',
+            background: '#0e1a2b',
             text: '#e0e0e0'
           }
         }
       }
     }
   </script>
-  <style>
-    /* ensure Inter font is used */
-    body { font-family: 'Inter', sans-serif; }
-  </style>
+  <style>body { font-family: 'Inter', sans-serif; }</style>
 </head>
-<body class="
-      bg-[url('logo/logo.png')]
-      bg-center bg-cover bg-fixed
-      antialiased text-text
-    ">
+<body class="bg-background text-text antialiased">
+
   <!-- Navbar -->
-  <header class="sticky top-0 z-30 bg-white/80 backdrop-blur">
+  <header class="sticky top-0 z-30 bg-white/90 backdrop-blur">
     <div class="max-w-7xl mx-auto flex items-center justify-between px-4 py-3">
+      <!-- Logo in navbar -->
       <a href="#" class="flex items-center space-x-2">
-        <img src="logo/logo.png" alt="JollyTech" class="h-8 w-8"/>
+        <img src="logo/logo.png" alt="JollyTech" class="h-8 w-8 object-contain"/>
         <span class="text-xl font-semibold text-primary">JollyTech</span>
       </a>
       <nav class="hidden md:flex space-x-6 text-sm font-medium text-primaryLight">
-        <a href="#features" data-i18n="navFeatures" class="hover:text-accentLight">Функции</a>
-        <a href="#workflow" data-i18n="navHow" class="hover:text-accentLight">Как работи</a>
-        <a href="#pricing" data-i18n="navPricing" class="hover:text-accentLight">Планове</a>
-        <a href="#contact" data-i18n="navContact" class="hover:text-accentLight">Контакт</a>
+        <a href="#features" class="hover:text-accentLight">Функции</a>
+        <a href="#workflow" class="hover:text-accentLight">Как работи</a>
+        <a href="#pricing" class="hover:text-accentLight">Планове</a>
+        <a href="#contact" class="hover:text-accentLight">Контакт</a>
       </nav>
       <select id="langSelect" class="border border-gray-300 rounded px-2 py-1 text-sm focus:outline-none">
         <option value="bg">BG</option>
@@ -55,9 +51,14 @@
     </div>
   </header>
 
-  <!-- Hero -->
-  <section class="bg-primary/80 text-center py-32 px-4">
-    <h1 data-i18n="heroTitle" class="text-4xl md:text-6xl font-bold mb-4">Автоматизирана търговия с крипто и акции</h1>
+  <!-- Hero with central logo -->
+  <section class="relative flex flex-col items-center justify-center text-center py-32 px-4 bg-primary/80">
+    <!-- Central logo -->
+    <img src="logo/logo.png" alt="JollyTech Logo" class="h-24 w-24 mb-6"/>
+
+    <h1 data-i18n="heroTitle" class="text-4xl md:text-6xl font-bold mb-4 text-white">
+      Автоматизирана търговия с крипто и акции
+    </h1>
     <p data-i18n="heroSubtitle" class="text-lg mb-8 max-w-2xl mx-auto text-accentLight">
       Създавай, тествай и стартирай ботове за Binance & Alpaca — без писане на код.
     </p>
@@ -68,109 +69,108 @@
   </section>
 
   <!-- Features -->
-  <section id="features" class="bg-white/80 py-24 px-4">
+  <section id="features" class="py-24 px-4 bg-white">
     <h2 data-i18n="featuresTitle" class="text-3xl font-bold text-center mb-12 text-primary">Ключови функции</h2>
     <div class="max-w-6xl mx-auto grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-      <div data-i18n-group="feat1" class="border p-6 rounded-lg hover:shadow-lg transition">
-        <h3 data-i18n="title" class="text-xl font-semibold mb-2">Интеграция с борси</h3>
-        <p data-i18n="desc">Binance (крипто) & Alpaca (US акции) — лесно свързване чрез API.</p>
+      <div class="border p-6 rounded-lg hover:shadow-lg transition">
+        <h3 class="text-xl font-semibold mb-2">Интеграция с борси</h3>
+        <p>Binance (крипто) & Alpaca (US акции) — лесно свързване чрез API.</p>
       </div>
-      <div data-i18n-group="feat2" class="border p-6 rounded-lg hover:shadow-lg transition">
-        <h3 data-i18n="title" class="text-xl font-semibold mb-2">Visual Strategy Builder</h3>
-        <p data-i18n="desc">Drag-&-drop редактор и visual backtesting.</p>
+      <div class="border p-6 rounded-lg hover:shadow-lg transition">
+        <h3 class="text-xl font-semibold mb-2">Visual Strategy Builder</h3>
+        <p>Drag-&-drop редактор и visual backtesting.</p>
       </div>
-      <div data-i18n-group="feat3" class="border p-6 rounded-lg hover:shadow-lg transition">
-        <h3 data-i18n="title" class="text-xl font-semibold mb-2">Маркетплейс</h3>
-        <p data-i18n="desc">Готови стратегии от community и качване на свои ML модели.</p>
+      <div class="border p-6 rounded-lg hover:shadow-lg transition">
+        <h3 class="text-xl font-semibold mb-2">Маркетплейс</h3>
+        <p>Готови стратегии от community и качване на свои ML модели.</p>
       </div>
-      <div data-i18n-group="feat4" class="border p-6 rounded-lg hover:shadow-lg transition">
-        <h3 data-i18n="title" class="text-xl font-semibold mb-2">Backtesting Engine</h3>
-        <p data-i18n="desc">Исторически данни до 10+ години, всички timeframe-и.</p>
+      <div class="border p-6 rounded-lg hover:shadow-lg transition">
+        <h3 class="text-xl font-semibold mb-2">Backtesting Engine</h3>
+        <p>Исторически данни до 10+ години, всички timeframe-и.</p>
       </div>
-      <div data-i18n-group="feat5" class="border p-6 rounded-lg hover:shadow-lg transition">
-        <h3 data-i18n="title" class="text-xl font-semibold mb-2">Paper Trading</h3>
-        <p data-i18n="desc">Симулирана търговия без риск за оптимизация на стратегии.</p>
+      <div class="border p-6 rounded-lg hover:shadow-lg transition">
+        <h3 class="text-xl font-semibold mb-2">Paper Trading</h3>
+        <p>Симулирана търговия без риск за оптимизация на стратегии.</p>
       </div>
-      <div data-i18n-group="feat6" class="border p-6 rounded-lg hover:shadow-lg transition">
-        <h3 data-i18n="title" class="text-xl font-semibold mb-2">Live Trading</h3>
-        <p data-i18n="desc">Автоматично изпращане на поръчки в реално време.</p>
+      <div class="border p-6 rounded-lg hover:shadow-lg transition">
+        <h3 class="text-xl font-semibold mb-2">Live Trading</h3>
+        <p>Автоматично изпращане на поръчки в реално време.</p>
       </div>
     </div>
   </section>
 
   <!-- Workflow -->
   <section id="workflow" class="bg-primary/80 py-24 px-4 text-white">
-    <h2 data-i18n="flowTitle" class="text-3xl font-bold text-center mb-12">Как работи</h2>
+    <h2 class="text-3xl font-bold text-center mb-12">Как работи</h2>
     <div class="max-w-4xl mx-auto grid gap-8 md:grid-cols-3 text-center">
-      <div data-i18n-group="step1">
+      <div>
         <div class="text-5xl mb-2">1</div>
-        <h3 data-i18n="title" class="font-semibold">Свържи борсите</h3>
-        <p data-i18n="desc">Добави API ключовете за Binance & Alpaca.</p>
+        <h3 class="font-semibold">Свържи борсите</h3>
+        <p>Добави API ключовете за Binance & Alpaca.</p>
       </div>
-      <div data-i18n-group="step2">
+      <div>
         <div class="text-5xl mb-2">2</div>
-        <h3 data-i18n="title" class="font-semibold">Избери стратегия</h3>
-        <p data-i18n="desc">Визуален редактор или готови шаблони.</p>
+        <h3 class="font-semibold">Избери стратегия</h3>
+        <p>Визуален редактор или готови шаблони.</p>
       </div>
-      <div data-i18n-group="step3">
+      <div>
         <div class="text-5xl mb-2">3</div>
-        <h3 data-i18n="title" class="font-semibold">Пусни и следи</h3>
-        <p data-i18n="desc">Активирай бота и наблюдавай резултатите в реално време.</p>
+        <h3 class="font-semibold">Пусни и следи</h3>
+        <p>Активирай бота и наблюдавай резултатите в реално време.</p>
       </div>
     </div>
   </section>
 
   <!-- Pricing -->
-  <section id="pricing" class="bg-white/80 py-24 px-4">
-    <h2 data-i18n="pricingTitle" class="text-3xl font-bold text-center mb-12 text-primary">Планове</h2>
+  <section id="pricing" class="py-24 px-4 bg-white">
+    <h2 class="text-3xl font-bold text-center mb-12 text-primary">Планове</h2>
     <div class="max-w-5xl mx-auto grid gap-8 md:grid-cols-3 text-center">
       <div class="border p-6 rounded-lg">
-        <h3 data-i18n="planStarter" class="font-semibold mb-2">Starter</h3>
+        <h3 class="font-semibold mb-2">Starter</h3>
         <p class="text-2xl font-bold mb-2">0 €</p>
-        <p data-i18n="starter1">1 активен бот</p>
-        <p data-i18n="starter2">Demo Binance</p>
-        <a href="#" class="mt-4 inline-block bg-primary text-white px-4 py-2 rounded" data-i18n="btnChoose">Избери</a>
+        <p>1 активен бот</p>
+        <p>Demo Binance</p>
+        <a href="#" class="mt-4 inline-block bg-primary text-white px-4 py-2 rounded">Избери</a>
       </div>
       <div class="border bg-primary p-6 rounded-lg text-white transform md:-translate-y-4">
-        <h3 data-i18n="planPro" class="font-semibold mb-2">Pro</h3>
+        <h3 class="font-semibold mb-2">Pro</h3>
         <p class="text-2xl font-bold mb-2">49 €</p>
-        <p data-i18n="pro1">10 бота</p>
-        <p data-i18n="pro2">Live Binance & Alpaca</p>
-        <p data-i18n="pro3">Backtest 10 години</p>
-        <a href="#" class="mt-4 inline-block border border-white px-4 py-2 rounded" data-i18n="btnChoose">Избери</a>
+        <p>10 бота</p>
+        <p>Live Binance & Alpaca</p>
+        <p>Backtest 10 години</p>
+        <a href="#" class="mt-4 inline-block border border-white px-4 py-2 rounded">Избери</a>
       </div>
       <div class="border p-6 rounded-lg">
-        <h3 data-i18n="planEnt" class="font-semibold mb-2">Enterprise</h3>
-        <p data-i18n="entPrice" class="text-2xl font-bold mb-2">По договаряне</p>
-        <p data-i18n="ent1">Неограничени ботове</p>
-        <p data-i18n="ent2">SLA & White-label</p>
-        <a href="#contact" class="mt-4 inline-block bg-accent text-white px-4 py-2 rounded" data-i18n="btnContact">Контакт</a>
+        <h3 class="font-semibold mb-2">Enterprise</h3>
+        <p class="text-2xl font-bold mb-2">По договаряне</p>
+        <p>Неограничени ботове</p>
+        <p>SLA & White-label</p>
+        <a href="#contact" class="mt-4 inline-block bg-accent text-white px-4 py-2 rounded">Контакт</a>
       </div>
     </div>
   </section>
 
   <!-- Contact -->
   <section id="contact" class="bg-primary/80 py-24 px-4 text-white">
-    <h2 data-i18n="contactTitle" class="text-3xl font-bold text-center mb-8">Свържи се с нас</h2>
+    <h2 class="text-3xl font-bold text-center mb-8">Свържи се с нас</h2>
     <div class="max-w-md mx-auto">
       <form action="mailto:info@jollytech.pro" method="post" enctype="text/plain" class="space-y-4">
         <input type="text" name="name" required placeholder="Име" class="w-full border px-3 py-2 rounded text-primary"/>
         <input type="email" name="email" required placeholder="Имейл" class="w-full border px-3 py-2 rounded text-primary"/>
         <textarea name="message" rows="4" required placeholder="Съобщение" class="w-full border px-3 py-2 rounded text-primary"></textarea>
-        <button type="submit" class="w-full bg-accent text-primary px-4 py-2 rounded" data-i18n="btnSend">Изпрати</button>
+        <button type="submit" class="w-full bg-accent text-primary px-4 py-2 rounded">Изпрати</button>
       </form>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="bg-white/80 backdrop-blur text-center py-4 text-sm text-gray-600">
+  <footer class="bg-white/90 backdrop-blur text-center py-4 text-sm text-gray-600">
     <p>&copy; 2025 JollyTech. All rights reserved.</p>
   </footer>
 
-  <!-- i18n script (без промяна) -->
+  <!-- i18n script (непроменен) -->
   <script>
-    const translations = { /* ... */ };
-    // остава същият translate() код
+    // ...translate() код...
   </script>
 </body>
 </html>
