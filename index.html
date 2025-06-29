@@ -294,8 +294,9 @@
       const exchange = document.getElementById('exchange').value;
       const apiKey = document.getElementById('apiKey').value;
       const apiSecret = document.getElementById('apiSecret').value;
-      // Display confirmation using correct translation key
-      const dict = translations[select.value] || translations['en'];
-      alert(dict['step1.title'] || 'Connected');
+      alert(`Свързване към ${exchange}...`);
       // TODO: call backend endpoint
     });
+  </script>
+</body>
+</html>
