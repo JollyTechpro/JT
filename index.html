@@ -15,12 +15,12 @@
       theme: {
         extend: {
           colors: {
-            primary: '#0e1a2b',      // Dark navy
-            primaryLight: '#1f2d3d', // Lighter navy
-            accent: '#00cba9',       // Turquoise accent
-            accentLight: '#4fe8cb',  // Light turquoise
-            background: '#0e1a2b',   // match primary for full-screen
-            text: '#e0e0e0'          // Light gray text
+            primary: '#0e1a2b',      /* Dark navy */
+            primaryLight: '#1f2d3d', /* Lighter navy */
+            accent: '#00cba9',       /* Turquoise accent */
+            accentLight: '#4fe8cb',  /* Light turquoise */
+            background: '#0e1a2b',   /* match primary for full-screen */
+            text: '#e0e0e0'          /* Light gray text */
           }
         }
       }
@@ -37,8 +37,8 @@
   <header class="bg-primaryLight">
     <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
       <div class="flex items-center">
-        <!-- относителен път към логото -->
-        <img src="./logo/logo.png" alt="JollyTech Logo" class="h-10 w-auto mr-2">
+        <!-- снeти logo.png от същата папка -->
+        <img src="./logo.png" alt="JollyTech Logo" class="h-10 w-auto mr-2">
         <span class="text-accent text-2xl font-semibold">JollyTech</span>
       </div>
       <nav class="hidden md:flex space-x-6 text-base">
@@ -64,8 +64,10 @@
 
   <!-- Hero -->
   <section class="text-center py-32 px-4">
-    <img src="./logo/logo.png" alt="JollyTech Logo" class="mx-auto h-20 w-auto mb-8">
-    <h1 data-i18n="heroTitle" class="text-4xl md:text-6xl font-bold mb-4">Автоматизирана търговия с крипто и акции</h1>
+    <img src="./logo.png" alt="JollyTech Logo" class="mx-auto h-20 w-auto mb-8">
+    <h1 data-i18n="heroTitle" class="text-4xl md:text-6xl font-bold mb-4">
+      Автоматизирана търговия с крипто и акции
+    </h1>
     <p data-i18n="heroSubtitle" class="text-lg mb-8 max-w-2xl mx-auto">
       Създавай, тествай и стартирай ботове за Binance & Alpaca — без писане на код.
     </p>
