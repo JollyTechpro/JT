@@ -2,10 +2,10 @@
 <html lang="bg">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>JollyTech – Automated Trading Platform</title>
   <!-- Favicon -->
-  <link rel="icon" href="logo/logo.png" type="image/png" />
+  <link rel="icon" href="logo/logo.png" type="image/png">
 
   <!-- Google Font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,40 +19,214 @@
       theme: {
         extend: {
           colors: {
-            primary: '#0e1a2b',
-            primaryLight: '#1f2d3d',
-            accent: '#00cba9',
-            accentLight: '#4fe8cb',
-            background: '#0e1a2b',
-            text: '#e0e0e0'
+            primary: '#0e1a2b',      // Dark navy
+            primaryLight: '#1f2d3d', // Lighter navy
+            accent: '#00cba9',       // Turquoise accent
+            accentLight: '#4fe8cb',  // Light turquoise
+            background: '#0e1a2b',   // match primary for full-screen
+            text: '#e0e0e0'          // Light gray text
           }
         }
       }
     }
   </script>
+
   <style>
-    body { font-family: 'Inter', sans-serif; }
-    /* Направи фон със собствено лого, покривай целия екран */
     body {
+      font-family: 'Inter', sans-serif;
+      /* full-screen background logo */
       background: url('logo/logo.png') center/cover no-repeat, #0e1a2b;
     }
   </style>
 </head>
 <body class="text-text antialiased">
-
   <!-- Navbar -->
   <header class="bg-white shadow sticky top-0 z-10">
     <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
       <a href="#" class="flex items-center">
-        <!-- Покажи логото в Navbar -->
         <img src="logo/logo.png" alt="JollyTech Logo" class="h-8 w-auto mr-3">
         <span class="text-2xl font-semibold text-primary">JollyTech</span>
       </a>
-      <!-- ... останалата навигация ... -->
+      <nav class="hidden md:flex space-x-6 text-sm font-medium text-text">
+        <a href="#features" data-i18n="navFeatures" class="hover:text-primaryLight">Функции</a>
+        <a href="#workflow" data-i18n="navHow" class="hover:text-primaryLight">Как работи</a>
+        <a href="#pricing" data-i18n="navPricing" class="hover:text-primaryLight">Планове</a>
+        <a href="#contact" data-i18n="navContact" class="hover:text-primaryLight">Контакт</a>
+      </nav>
+      <select id="langSelect" class="border border-gray-300 rounded px-2 py-1 text-sm focus:outline-none">
+        <option value="bg">BG</option>
+        <option value="en">EN</option>
+        <option value="de">DE</option>
+        <option value="es">ES</option>
+        <option value="it">IT</option>
+        <option value="tr">TR</option>
+        <option value="gr">GR</option>
+        <option value="ro">RO</option>
+        <option value="fr">FR</option>
+      </select>
     </div>
   </header>
 
-  <!-- … останалата част от страницата … -->
+  <!-- Hero -->
+  <section class="text-center py-32 px-4">
+    <h1 data-i18n="heroTitle" class="text-4xl md:text-6xl font-bold mb-4 leading-tight">
+      Автоматизирана търговия с крипто и акции
+    </h1>
+    <p data-i18n="heroSubtitle" class="text-lg mb-8 max-w-2xl mx-auto">
+      Създавай, тествай и стартирай ботове за Binance & Alpaca — без писане на код.
+    </p>
+    <a href="#workflow"
+       data-i18n="heroCTA"
+       class="inline-block bg-primary text-white px-6 py-3 rounded-md hover:bg-primaryLight transition">
+      Започни безплатно
+    </a>
+  </section>
 
+  <!-- Features -->
+  <section id="features" class="py-24 px-4 bg-white">
+    <h2 data-i18n="featuresTitle" class="text-3xl font-bold text-center mb-12">Ключови функции</h2>
+    <div class="max-w-6xl mx-auto grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+      <a href="#workflow" data-i18n-group="feat1"
+         class="block border p-6 rounded-lg hover:shadow-lg transition">
+        <h3 data-i18n="title" class="text-xl font-semibold mb-2">Интеграция с борси</h3>
+        <p data-i18n="desc">Binance (крипто) & Alpaca (US акции) — лесно свързване чрез API.</p>
+      </a>
+      <div data-i18n-group="feat2" class="border p-6 rounded-lg">
+        <h3 data-i18n="title" class="text-xl font-semibold mb-2">Visual Strategy Builder</h3>
+        <p data-i18n="desc">Drag-&-drop редактор и backtest във визуален режим.</p>
+      </div>
+      <div data-i18n-group="feat3" class="border p-6 rounded-lg">
+        <h3 data-i18n="title" class="text-xl font-semibold mb-2">Маркетплейс</h3>
+        <p data-i18n="desc">Готови стратегии от community и качване на свои ML модели.</p>
+      </div>
+      <div data-i18n-group="feat4" class="border p-6 rounded-lg">
+        <h3 data-i18n="title" class="text-xl font-semibold mb-2">Backtesting Engine</h3>
+        <p data-i18n="desc">Исторически данни до 10+ години, всякакви timeframe-и.</p>
+      </div>
+      <div data-i18n-group="feat5" class="border p-6 rounded-lg">
+        <h3 data-i18n="title" class="text-xl font-semibold mb-2">Paper Trading</h3>
+        <p data-i18n="desc">Симулирана търговия без риск за оптимизация на стратегии.</p>
+      </div>
+      <div data-i18n-group="feat6" class="border p-6 rounded-lg">
+        <h3 data-i18n="title" class="text-xl font-semibold mb-2">Live Trading</h3>
+        <p data-i18n="desc">Автоматично изпращане на поръчки в реално време.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Workflow -->
+  <section id="workflow" class="py-24 px-4 bg-background">
+    <h2 data-i18n="flowTitle" class="text-3xl font-bold text-center mb-12">Как работи</h2>
+    <div class="max-w-4xl mx-auto grid gap-8 md:grid-cols-3 text-center">
+      <!-- Step 1 -->
+      <div data-i18n-group="step1">
+        <div id="step1-form"
+             class="p-6 bg-white rounded-lg shadow mx-auto max-w-md text-left">
+          <h3 data-i18n="title" class="text-xl font-semibold mb-4">Свържи борсите</h3>
+          <form id="connectForm" class="space-y-4">
+            <div>
+              <label class="block mb-1">Избери борса</label>
+              <select id="exchange" class="w-full border px-3 py-2 rounded">
+                <option value="alpaca">Alpaca</option>
+                <option value="binance">Binance</option>
+              </select>
+            </div>
+            <div>
+              <label class="block mb-1">API Key</label>
+              <input id="apiKey" type="text" class="w-full border px-3 py-2 rounded"
+                     placeholder="Вашият API Key">
+            </div>
+            <div>
+              <label class="block mb-1">API Secret</label>
+              <input id="apiSecret" type="text" class="w-full border px-3 py-2 rounded"
+                     placeholder="Вашият API Secret">
+            </div>
+            <button type="submit"
+                    class="w-full bg-primary text-white px-4 py-2 rounded"
+                    data-i18n="btnConnect">Свържи</button>
+          </form>
+        </div>
+      </div>
+      <!-- Step 2 -->
+      <div data-i18n-group="step2">
+        <div class="text-5xl mb-2">2</div>
+        <h3 data-i18n="title" class="font-semibold">Избери стратегия</h3>
+        <p data-i18n="desc">Визуален редактор или готови шаблони.</p>
+      </div>
+      <!-- Step 3 -->
+      <div data-i18n-group="step3">
+        <div class="text-5xl mb-2">3</div>
+        <h3 data-i18n="title" class="font-semibold">Пусни и следи</h3>
+        <p data-i18n="desc">Активирай бота и наблюдавай резултатите в реално време.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section id="pricing" class="py-24 px-4 bg-white">
+    <h2 data-i18n="pricingTitle" class="text-3xl font-bold text-center mb-12">Планове</h2>
+    <div class="max-w-5xl mx-auto grid gap-8 md:grid-cols-3 text-center">
+      <!-- Starter -->
+      <div class="border p-6 rounded-lg">
+        <h3 class="font-semibold mb-2" data-i18n="planStarter">Starter</h3>
+        <p class="text-2xl font-bold mb-2">0 €</p>
+        <p data-i18n="starter1">1 активен бот</p>
+        <p data-i18n="starter2">Demo Binance</p>
+        <a href="#"
+           class="mt-4 inline-block bg-primary text-white px-4 py-2 rounded"
+           data-i18n="btnChoose">Избери</a>
+      </div>
+      <!-- Pro -->
+      <div class="border bg-primary p-6 rounded-lg text-white transform md:-translate-y-4">
+        <h3 class="font-semibold mb-2" data-i18n="planPro">Pro</h3>
+        <p class="text-2xl font-bold mb-2">49 €</p>
+        <p data-i18n="pro1">10 бота</p>
+        <p data-i18n="pro2">Live Binance & Alpaca</p>
+        <p data-i18n="pro3">Backtest 10 години</p>
+        <a href="#"
+           class="mt-4 inline-block border border-white px-4 py-2 rounded"
+           data-i18n="btnChoose">Избери</a>
+      </div>
+      <!-- Enterprise -->
+      <div class="border p-6 rounded-lg">
+        <h3 class="font-semibold mb-2" data-i18n="planEnt">Enterprise</h3>
+        <p class="text-2xl font-bold mb-2" data-i18n="entPrice">По договаряне</p>
+        <p data-i18n="ent1">Неограничени ботове</p>
+        <p data-i18n="ent2">SLA & White-label</p>
+        <a href="#contact"
+           class="mt-4 inline-block bg-accent text-white px-4 py-2 rounded"
+           data-i18n="btnContact">Контакт</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="py-24 px-4 bg-background">
+    <h2 data-i18n="contactTitle" class="text-3xl font-bold text-center mb-8">Свържи се с нас</h2>
+    <div class="max-w-md mx-auto">
+      <form action="mailto:info@jollytech.pro" method="post" enctype="text/plain" class="space-y-4">
+        <input type="text" name="name" required placeholder="Име"
+               class="w-full border px-3 py-2 rounded text-text">
+        <input type="email" name="email" required placeholder="Имейл"
+               class="w-full border px-3 py-2 rounded text-text">
+        <textarea name="message" rows="4" required placeholder="Съобщение"
+                  class="w-full border px-3 py-2 rounded text-text"></textarea>
+        <button type="submit"
+                class="w-full bg-primary text-white px-4 py-2 rounded"
+                data-i18n="btnSend">Изпрати</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-6 text-center text-sm text-gray-500 border-t bg-white">
+    <p>&copy; 2025 JollyTech. All rights reserved.</p>
+  </footer>
+
+  <!-- i18n & Connect Script (unchanged) -->
+  <script>
+    // ... your existing translations & translate() function ...
+    // ... your connectForm submit handler ...
+  </script>
 </body>
 </html>
