@@ -19,7 +19,7 @@
             primaryLight: '#1f2d3d', // Lighter navy
             accent: '#00cba9',       // Turquoise accent
             accentLight: '#4fe8cb',  // Light turquoise
-            background: '#0e1a2b',   // full-screen background
+            background: '#0e1a2b',   // match primary for full-screen
             text: '#e0e0e0'          // Light gray text
           }
         }
@@ -37,7 +37,7 @@
   <header class="bg-primaryLight">
     <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
       <div class="flex items-center">
-        <!-- Относителен път към логото -->
+        <!-- относителен път към логото -->
         <img src="./logo/logo.png" alt="JollyTech Logo" class="h-10 w-auto mr-2">
         <span class="text-accent text-2xl font-semibold">JollyTech</span>
       </div>
@@ -193,17 +193,7 @@
 
   <!-- i18n Script -->
   <script>
-    const translations = {
-      bg: { /* ... */ },
-      en: { /* ... */ },
-      de: { /* ... */ },
-      es: { /* ... */ },
-      it: { /* ... */ },
-      tr: { /* ... */ },
-      gr: { /* ... */ },
-      ro: { /* ... */ },
-      fr: { /* ... */ }
-    };
+    const translations = { /* твоите преводи */ };
     const select = document.getElementById('langSelect');
     function translate(lang) {
       const dict = translations[lang] || translations['en'];
