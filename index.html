@@ -1,17 +1,13 @@
 <!DOCTYPE html>
 <html lang="bg">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>JollyTech – Automated Trading Platform</title>
-  <!-- Favicon -->
-  <link rel="icon" href="logo/logo.png" type="image/png"/>
-
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
-
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -23,28 +19,35 @@
             primaryLight: '#1f2d3d', // Lighter navy
             accent: '#00cba9',       // Turquoise accent
             accentLight: '#4fe8cb',  // Light turquoise
+            background: '#0e1a2b',   // match primary for full-screen
             text: '#e0e0e0'          // Light gray text
           }
         }
       }
     }
   </script>
-
   <style>
     body {
       font-family: 'Inter', sans-serif;
-      background: url('logo/logo.png') center center / cover no-repeat;
+      /* фон = logo */
+      background: url('logo/logo.png') center center / cover no-repeat fixed;
     }
-    /* Задължително за четливост: полупрозрачни фонoве */
-    .overlay-bg { background-color: rgba(14, 26, 43, 0.85); }
-    .overlay-white { background-color: rgba(255, 255, 255, 0.85); }
+    /* лек оувърлей, ако искаш по-тъмен фон зад контента */
+    .overlay {
+      position: absolute;
+      inset: 0;
+      background-color: rgba(14,26,43,0.7);
+      pointer-events: none;
+    }
   </style>
 </head>
-<body class="text-text antialiased">
+<body class="relative text-text antialiased">
+  <!-- Overlay (по избор) -->
+  <div class="overlay"></div>
 
   <!-- Navbar -->
-  <header class="sticky top-0 z-10 overlay-white backdrop-blur-sm">
-    <div class="max-w-7xl mx-auto flex items-center justify-between px-4 py-3">
+  <header class="bg-white bg-opacity-80 backdrop-blur sticky top-0 z-20">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
       <a href="#" class="flex items-center">
         <img src="logo/logo.png" alt="JollyTech" class="h-8 w-auto mr-2">
         <span class="text-2xl font-semibold text-primary">JollyTech</span>
@@ -55,103 +58,105 @@
         <a href="#pricing" data-i18n="navPricing" class="hover:text-primaryLight">Планове</a>
         <a href="#contact" data-i18n="navContact" class="hover:text-primaryLight">Контакт</a>
       </nav>
-      <select id="langSelect" class="border border-gray-300 rounded px-2 py-1 text-sm focus:outline-none bg-white">
+      <select id="langSelect" class="border border-gray-300 rounded px-2 py-1 text-sm focus:outline-none">
         <option value="bg">BG</option>
         <option value="en">EN</option>
-        <option value="de">DE</option>
-        <option value="es">ES</option>
-        <option value="it">IT</option>
-        <option value="tr">TR</option>
-        <option value="gr">GR</option>
-        <option value="ro">RO</option>
-        <option value="fr">FR</option>
+        <!-- и останалите -->
       </select>
     </div>
   </header>
 
   <!-- Hero -->
-  <section class="text-center py-32 px-4 overlay-bg">
-    <h1 data-i18n="heroTitle" class="text-4xl md:text-6xl font-bold mb-4 leading-tight text-white">
-      Автоматизирана търговия с крипто и акции
-    </h1>
-    <p data-i18n="heroSubtitle" class="text-lg mb-8 max-w-2xl mx-auto text-accentLight">
-      Създавай, тествай и стартирай ботове за Binance & Alpaca — без писане на код.
-    </p>
-    <a href="#workflow"
-       data-i18n="heroCTA"
-       class="inline-block bg-accent text-primary px-6 py-3 rounded-md hover:bg-accentLight transition">
-      Започни безплатно
-    </a>
+  <section class="relative text-center py-32 px-4">
+    <h1 data-i18n="heroTitle" class="text-4xl md:text-6xl font-bold mb-4 leading-tight text-white">Автоматизирана търговия с крипто и акции</h1>
+    <p data-i18n="heroSubtitle" class="text-lg mb-8 max-w-2xl mx-auto text-accentLight">Създавай, тествай и стартирай ботове за Binance & Alpaca — без писане на код.</p>
+    <a href="#workflow" data-i18n="heroCTA" class="inline-block bg-accent text-background px-6 py-3 rounded-md hover:bg-accentLight transition font-medium">Започни безплатно</a>
   </section>
 
   <!-- Features -->
-  <section id="features" class="py-24 px-4 overlay-white">
-    <h2 data-i18n="featuresTitle" class="text-3xl font-bold text-primary text-center mb-12">Ключови функции</h2>
+  <section id="features" class="py-24 px-4 bg-white bg-opacity-90 relative z-10">
+    <h2 data-i18n="featuresTitle" class="text-3xl font-bold text-center mb-12 text-primary">Ключови функции</h2>
     <div class="max-w-6xl mx-auto grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-      <!-- Feature 1 -->
-      <a href="#workflow" data-i18n-group="feat1"
-         class="block border border-primaryLight p-6 rounded-lg hover:shadow-lg transition bg-white">
-        <h3 data-i18n="title" class="text-xl font-semibold mb-2 text-primary">Интеграция с борси</h3>
-        <p data-i18n="desc" class="text-text">Binance (крипто) & Alpaca (US акции) — лесно свързване чрез API.</p>
+      <a href="#workflow" data-i18n-group="feat1" class="block border p-6 rounded-lg hover:shadow-lg transition">
+        <h3 data-i18n="title" class="text-xl font-semibold mb-2">Интеграция с борси</h3>
+        <p data-i18n="desc">Binance (крипто) & Alpaca (US акции) — лесно свързване чрез API.</p>
       </a>
-      <!-- Feature 2 -->
-      <div data-i18n-group="feat2" class="border border-primaryLight p-6 rounded-lg bg-white">
-        <h3 data-i18n="title" class="text-xl font-semibold mb-2 text-primary">Visual Strategy Builder</h3>
-        <p data-i18n="desc" class="text-text">Drag-&-drop редактор и backtest във визуален режим.</p>
+      <div data-i18n-group="feat2" class="border p-6 rounded-lg">
+        <h3 data-i18n="title" class="text-xl font-semibold mb-2">Visual Strategy Builder</h3>
+        <p data-i18n="desc">Drag-&-drop редактор и backtest във визуален режим.</p>
       </div>
-      <!-- Feature 3 -->
-      <div data-i18n-group="feat3" class="border border-primaryLight p-6 rounded-lg bg-white">
-        <h3 data-i18n="title" class="text-xl font-semibold mb-2 text-primary">Маркетплейс</h3>
-        <p data-i18n="desc" class="text-text">Готови стратегии от community и качване на свои ML модели.</p>
+      <div data-i18n-group="feat3" class="border p-6 rounded-lg">
+        <h3 data-i18n="title" class="text-xl font-semibold mb-2">Маркетплейс</h3>
+        <p data-i18n="desc">Готови стратегии от community и качване на свои ML модели.</p>
       </div>
-      <!-- Feature 4 -->
-      <div data-i18n-group="feat4" class="border border-primaryLight p-6 rounded-lg bg-white">
-        <h3 data-i18n="title" class="text-xl font-semibold mb-2 text-primary">Backtesting Engine</h3>
-        <p data-i18n="desc" class="text-text">Исторически данни до 10+ години, всякакви timeframe-и.</p>
+      <div data-i18n-group="feat4" class="border p-6 rounded-lg">
+        <h3 data-i18n="title" class="text-xl font-semibold mb-2">Backtesting Engine</h3>
+        <p data-i18n="desc">Исторически данни до 10+ години, всякакви timeframe-и.</p>
       </div>
-      <!-- Feature 5 -->
-      <div data-i18n-group="feat5" class="border border-primaryLight p-6 rounded-lg bg-white">
-        <h3 data-i18n="title" class="text-xl font-semibold mb-2 text-primary">Paper Trading</h3>
-        <p data-i18n="desc" class="text-text">Симулирана търговия без риск за оптимизация на стратегии.</p>
+      <div data-i18n-group="feat5" class="border p-6 rounded-lg">
+        <h3 data-i18n="title" class="text-xl font-semibold mb-2">Paper Trading</h3>
+        <p data-i18n="desc">Симулирана търговия без риск за оптимизация на стратегии.</p>
       </div>
-      <!-- Feature 6 -->
-      <div data-i18n-group="feat6" class="border border-primaryLight p-6 rounded-lg bg-white">
-        <h3 data-i18n="title" class="text-xl font-semibold mb-2 text-primary">Live Trading</h3>
-        <p data-i18n="desc" class="text-text">Автоматично изпращане на поръчки в реално време.</p>
+      <div data-i18n-group="feat6" class="border p-6 rounded-lg">
+        <h3 data-i18n="title" class="text-xl font-semibold mb-2">Live Trading</h3>
+        <p data-i18n="desc">Автоматично изпращане на поръчки в реално време.</p>
       </div>
     </div>
   </section>
 
-  <!-- Workflow, Pricing, Contact & Footer -->
-  <!-- Добавете ги същите, но с класове overlay-bg или overlay-white за фон -->
-  <!-- ... -->
+  <!-- Останалите секции (Workflow, Pricing, Contact, Footer) -->
+  <!-- ... (копирайте от вашия текущ index след #features) ... -->
 
-  <!-- i18n & форма за свързване -->
+  <!-- i18n Script -->
   <script>
-    const translations = { /* вашите преводи */ };
+    const translations = {
+      bg: {
+        navFeatures: 'Функции', navHow: 'Как работи', navPricing: 'Планове', navContact: 'Контакт',
+        heroTitle: 'Автоматизирана търговия с крипто и акции',
+        heroSubtitle: 'Създавай, тествай и стартирай ботове за Binance & Alpaca — без писане на код.',
+        heroCTA: 'Започни безплатно',
+        featuresTitle: 'Ключови функции',
+        'feat1.title': 'Интеграция с борси', 'feat1.desc': 'Binance (крипто) & Alpaca (US акции) — лесно свързване чрез API.',
+        'feat2.title': 'Visual Strategy Builder', 'feat2.desc': 'Drag-&-drop редактор и backtest във визуален режим.',
+        'feat3.title': 'Маркетплейс', 'feat3.desc': 'Готови стратегии от community и качване на свои ML модели.',
+        'feat4.title': 'Backtesting Engine', 'feat4.desc': 'Исторически данни до 10+ години, всякакви timeframe-и.',
+        'feat5.title': 'Paper Trading', 'feat5.desc': 'Симулирана търговия без риск за оптимизация на стратегии.',
+        'feat6.title': 'Live Trading', 'feat6.desc': 'Автоматично изпращане на поръчки в реално време.',
+      },
+      en: {
+        navFeatures: 'Features', navHow: 'How it works', navPricing: 'Pricing', navContact: 'Contact',
+        heroTitle: 'Automated trading for crypto & stocks',
+        heroSubtitle: 'Create, test and deploy bots for Binance & Alpaca — no code needed.',
+        heroCTA: 'Start free',
+        featuresTitle: 'Key Features',
+        'feat1.title': 'Exchange Integration', 'feat1.desc': 'Binance (crypto) & Alpaca (US stocks) — easy API setup.',
+        'feat2.title': 'Visual Strategy Builder', 'feat2.desc': 'Drag-&-drop editor with visual backtesting.',
+        'feat3.title': 'Marketplace', 'feat3.desc': 'Ready-made community strategies and upload custom ML models.',
+        'feat4.title': 'Backtesting Engine', 'feat4.desc': 'Historical data back to 10+ years, multiple timeframes.',
+        'feat5.title': 'Paper Trading', 'feat5.desc': 'Risk-free simulated trading to refine strategies.',
+        'feat6.title': 'Live Trading', 'feat6.desc': 'Automatic order execution in real-time.',
+      }
+      // добавете останалите езици...
+    };
+
     const select = document.getElementById('langSelect');
     function translate(lang) {
-      const dict = translations[lang] || translations.en;
+      const dict = translations[lang] || translations['en'];
       document.querySelectorAll('[data-i18n]').forEach(el => {
-        const key = el.dataset.i18n;
+        const key = el.getAttribute('data-i18n');
         if (dict[key]) el.textContent = dict[key];
       });
-      document.querySelectorAll('[data-i18n-group]').forEach(group => {
-        const grp = group.dataset.i18nGroup;
-        group.querySelectorAll('[data-i18n]').forEach(el => {
-          const sub = `${grp}.${el.dataset.i18n}`;
-          if (dict[sub]) el.textContent = dict[sub];
+      document.querySelectorAll('[data-i18n-group]').forEach(groupEl => {
+        const grp = groupEl.getAttribute('data-i18n-group');
+        groupEl.querySelectorAll('[data-i18n]').forEach(ch => {
+          const sub = `${grp}.${ch.getAttribute('data-i18n')}`;
+          if (dict[sub]) ch.textContent = dict[sub];
         });
       });
     }
+
     select.addEventListener('change', e => translate(e.target.value));
     translate('bg');
-
-    document.getElementById('connectForm')?.addEventListener('submit', e => {
-      e.preventDefault();
-      const exchange = document.getElementById('exchange').value;
-      alert(`Свързване към ${exchange}...`);
-    });
   </script>
 </body>
 </html>
