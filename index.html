@@ -19,7 +19,7 @@
             primaryLight: '#1f2d3d', // Lighter navy
             accent: '#00cba9',       // Turquoise accent
             accentLight: '#4fe8cb',  // Light turquoise
-            background: '#0e1a2b',   // match primary for full-screen
+            background: '#0e1a2b',   // full-screen background
             text: '#e0e0e0'          // Light gray text
           }
         }
@@ -37,7 +37,8 @@
   <header class="bg-primaryLight">
     <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
       <div class="flex items-center">
-        <img src="logo/logo.png" alt="JollyTech Logo" class="h-10 w-auto mr-2">
+        <!-- Относителен път към логото -->
+        <img src="./logo/logo.png" alt="JollyTech Logo" class="h-10 w-auto mr-2">
         <span class="text-accent text-2xl font-semibold">JollyTech</span>
       </div>
       <nav class="hidden md:flex space-x-6 text-base">
@@ -63,7 +64,7 @@
 
   <!-- Hero -->
   <section class="text-center py-32 px-4">
-    <img src="logo/logo.png" alt="JollyTech Logo" class="mx-auto h-20 w-auto mb-8">
+    <img src="./logo/logo.png" alt="JollyTech Logo" class="mx-auto h-20 w-auto mb-8">
     <h1 data-i18n="heroTitle" class="text-4xl md:text-6xl font-bold mb-4">Автоматизирана търговия с крипто и акции</h1>
     <p data-i18n="heroSubtitle" class="text-lg mb-8 max-w-2xl mx-auto">
       Създавай, тествай и стартирай ботове за Binance & Alpaca — без писане на код.
@@ -101,7 +102,7 @@
       </div>
       <div data-i18n-group="feat6" class="border border-accent rounded-lg p-6">
         <h3 data-i18n="title" class="text-xl font-semibold mb-2">Live Trading</h3>
-        <p data-i18n="desc">Автоматично изпращане на поръчки в истинско време.</p>
+        <p data-i18n="desc">Автоматично изпращане на поръчки в реално време.</p>
       </div>
     </div>
   </section>
