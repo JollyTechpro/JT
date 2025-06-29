@@ -15,41 +15,34 @@
       theme: {
         extend: {
           colors: {
-            primary: '#0e1a2b',
-            primaryLight: '#1f2d3d',
-            accent: '#00cba9',
+            primary: '#0e1a2b',      // тъмно синьо
+            accent: '#00cba9',       // тюркоазено
             accentLight: '#4fe8cb',
-            background: '#0e1a2b',
-            text: '#e0e0e0'
+            text: '#00cba9'
           }
         }
       }
     }
   </script>
-  <style>
-    body {
-      font-family: 'Inter', sans-serif;
-    }
-  </style>
+  <style>body { font-family: 'Inter', sans-serif; }</style>
 </head>
-<body class="text-text antialiased
-    bg-[url('logo/logo.png')] bg-cover bg-center bg-fixed">
+<body class="bg-primary text-text antialiased">
 
   <!-- Navbar -->
-  <header class="sticky top-0 z-30 bg-white/80 backdrop-blur-md">
+  <header class="bg-primary/80 backdrop-blur-sm sticky top-0 z-20">
     <div class="max-w-7xl mx-auto flex items-center justify-between px-4 py-3">
-      <!-- Малко лого + текст -->
+      <!-- Лого + заглавие -->
       <a href="#" class="flex items-center space-x-2">
-        <img src="logo/logo.png" alt="JollyTech" class="h-8 w-8 object-contain"/>
-        <span class="text-xl font-semibold text-primary">JollyTech</span>
+        <img src="logo/logo.png" alt="JollyTech" class="h-8 w-8"/>
+        <span class="text-xl font-semibold">JollyTech</span>
       </a>
-      <nav class="hidden md:flex space-x-6 text-sm font-medium text-primaryLight">
-        <a href="#features" class="hover:text-accentLight" data-i18n="navFeatures">Функции</a>
-        <a href="#workflow" class="hover:text-accentLight" data-i18n="navHow">Как работи</a>
-        <a href="#pricing" class="hover:text-accentLight" data-i18n="navPricing">Планове</a>
-        <a href="#contact" class="hover:text-accentLight" data-i18n="navContact">Контакт</a>
+      <nav class="hidden md:flex space-x-6 text-sm font-medium">
+        <a href="#features" class="hover:text-accentLight">Функции</a>
+        <a href="#workflow" class="hover:text-accentLight">Как работи</a>
+        <a href="#pricing" class="hover:text-accentLight">Планове</a>
+        <a href="#contact" class="hover:text-accentLight">Контакт</a>
       </nav>
-      <select id="langSelect" class="border border-gray-300 rounded px-2 py-1 text-sm focus:outline-none">
+      <select id="langSelect" class="border border-accent rounded px-2 py-1 text-sm bg-primary focus:outline-none">
         <option value="bg">BG</option>
         <option value="en">EN</option>
       </select>
@@ -57,46 +50,40 @@
   </header>
 
   <!-- Hero -->
-  <section class="flex flex-col items-center justify-center text-center py-32 px-4 bg-primary/80">
-    <h1 data-i18n="heroTitle" class="text-4xl md:text-6xl font-bold mb-4 text-white">
-      Автоматизирана търговия с крипто и акции
-    </h1>
-    <p data-i18n="heroSubtitle" class="text-lg mb-8 max-w-2xl mx-auto text-accentLight">
-      Създавай, тествай и стартирай ботове за Binance & Alpaca — без писане на код.
-    </p>
-    <a href="#workflow" data-i18n="heroCTA"
-       class="inline-block bg-accent text-primary px-6 py-3 rounded-md hover:bg-accentLight transition font-medium">
+  <section class="flex flex-col items-center justify-center text-center py-32 px-4">
+    <img src="logo/logo.png" alt="JollyTech Logo" class="h-24 w-24 mb-6"/>
+    <h1 class="text-4xl md:text-6xl font-bold mb-4">Автоматизирана търговия с крипто и акции</h1>
+    <p class="text-lg mb-8 max-w-2xl mx-auto">Създавай, тествай и стартирай ботове за Binance & Alpaca — без писане на код.</p>
+    <a href="#workflow" class="bg-accent text-primary px-6 py-3 rounded-md hover:bg-accentLight transition font-medium">
       Започни безплатно
     </a>
   </section>
 
   <!-- Features -->
-  <section id="features" class="py-24 px-4 bg-white">
-    <h2 data-i18n="featuresTitle" class="text-3xl font-bold text-center mb-12 text-primary">
-      Ключови функции
-    </h2>
+  <section id="features" class="py-24 px-4">
+    <h2 class="text-3xl font-bold text-center mb-12">Ключови функции</h2>
     <div class="max-w-6xl mx-auto grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-      <div class="border p-6 rounded-lg hover:shadow-lg transition">
+      <div class="border border-accent p-6 rounded-lg hover:shadow-lg transition">
         <h3 class="text-xl font-semibold mb-2">Интеграция с борси</h3>
         <p>Binance (крипто) & Alpaca (US акции) — лесно свързване чрез API.</p>
       </div>
-      <div class="border p-6 rounded-lg hover:shadow-lg transition">
+      <div class="border border-accent p-6 rounded-lg hover:shadow-lg transition">
         <h3 class="text-xl font-semibold mb-2">Visual Strategy Builder</h3>
         <p>Drag-&-drop редактор и visual backtesting.</p>
       </div>
-      <div class="border p-6 rounded-lg hover:shadow-lg transition">
+      <div class="border border-accent p-6 rounded-lg hover:shadow-lg transition">
         <h3 class="text-xl font-semibold mb-2">Маркетплейс</h3>
         <p>Готови стратегии от community и качване на свои ML модели.</p>
       </div>
-      <div class="border p-6 rounded-lg hover:shadow-lg transition">
+      <div class="border border-accent p-6 rounded-lg hover:shadow-lg transition">
         <h3 class="text-xl font-semibold mb-2">Backtesting Engine</h3>
         <p>Исторически данни до 10+ години, всички timeframe-и.</p>
       </div>
-      <div class="border p-6 rounded-lg hover:shadow-lg transition">
+      <div class="border border-accent p-6 rounded-lg hover:shadow-lg transition">
         <h3 class="text-xl font-semibold mb-2">Paper Trading</h3>
         <p>Симулирана търговия без риск за оптимизация на стратегии.</p>
       </div>
-      <div class="border p-6 rounded-lg hover:shadow-lg transition">
+      <div class="border border-accent p-6 rounded-lg hover:shadow-lg transition">
         <h3 class="text-xl font-semibold mb-2">Live Trading</h3>
         <p>Автоматично изпращане на поръчки в реално време.</p>
       </div>
@@ -104,7 +91,7 @@
   </section>
 
   <!-- Workflow -->
-  <section id="workflow" class="bg-primary/80 py-24 px-4 text-white">
+  <section id="workflow" class="py-24 px-4">
     <h2 class="text-3xl font-bold text-center mb-12">Как работи</h2>
     <div class="max-w-4xl mx-auto grid gap-8 md:grid-cols-3 text-center">
       <div>
@@ -126,67 +113,54 @@
   </section>
 
   <!-- Pricing -->
-  <section id="pricing" class="py-24 px-4 bg-white">
-    <h2 class="text-3xl font-bold text-center mb-12 text-primary">Планове</h2>
+  <section id="pricing" class="py-24 px-4">
+    <h2 class="text-3xl font-bold text-center mb-12">Планове</h2>
     <div class="max-w-5xl mx-auto grid gap-8 md:grid-cols-3 text-center">
-      <div class="border p-6 rounded-lg">
+      <div class="border border-accent p-6 rounded-lg">
         <h3 class="font-semibold mb-2">Starter</h3>
         <p class="text-2xl font-bold mb-2">0 €</p>
         <p>1 активен бот</p>
         <p>Demo Binance</p>
-        <a href="#" class="mt-4 inline-block bg-primary text-white px-4 py-2 rounded">Избери</a>
+        <a href="#" class="mt-4 inline-block bg-accent text-primary px-4 py-2 rounded">Избери</a>
       </div>
-      <div class="border bg-primary p-6 rounded-lg text-white transform md:-translate-y-4">
+      <div class="border border-accent bg-primary p-6 rounded-lg text-accent transform md:-translate-y-4">
         <h3 class="font-semibold mb-2">Pro</h3>
         <p class="text-2xl font-bold mb-2">49 €</p>
         <p>10 бота</p>
         <p>Live Binance & Alpaca</p>
         <p>Backtest 10 години</p>
-        <a href="#" class="mt-4 inline-block border border-white px-4 py-2 rounded">Избери</a>
+        <a href="#" class="mt-4 inline-block border border-accent px-4 py-2 rounded">Избери</a>
       </div>
-      <div class="border p-6 rounded-lg">
+      <div class="border border-accent p-6 rounded-lg">
         <h3 class="font-semibold mb-2">Enterprise</h3>
         <p class="text-2xl font-bold mb-2">По договаряне</p>
         <p>Неограничени ботове</p>
         <p>SLA & White-label</p>
-        <a href="#contact" class="mt-4 inline-block bg-accent text-white px-4 py-2 rounded">Контакт</a>
+        <a href="#contact" class="mt-4 inline-block bg-accent text-primary px-4 py-2 rounded">Контакт</a>
       </div>
     </div>
   </section>
 
   <!-- Contact -->
-  <section id="contact" class="bg-primary/80 py-24 px-4 text-white">
+  <section id="contact" class="py-24 px-4">
     <h2 class="text-3xl font-bold text-center mb-8">Свържи се с нас</h2>
     <div class="max-w-md mx-auto">
       <form action="mailto:info@jollytech.pro" method="post" enctype="text/plain" class="space-y-4">
-        <input type="text" name="name" required placeholder="Име" class="w-full border px-3 py-2 rounded text-primary"/>
-        <input type="email" name="email" required placeholder="Имейл" class="w-full border px-3 py-2 rounded text-primary"/>
-        <textarea name="message" rows="4" required placeholder="Съобщение" class="w-full border px-3 py-2 rounded text-primary"></textarea>
+        <input type="text" name="name" required placeholder="Име"
+               class="w-full border border-accent px-3 py-2 rounded bg-primary text-text"/>
+        <input type="email" name="email" required placeholder="Имейл"
+               class="w-full border border-accent px-3 py-2 rounded bg-primary text-text"/>
+        <textarea name="message" rows="4" required placeholder="Съобщение"
+                  class="w-full border border-accent px-3 py-2 rounded bg-primary text-text"></textarea>
         <button type="submit" class="w-full bg-accent text-primary px-4 py-2 rounded">Изпрати</button>
       </form>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="bg-white/80 backdrop-blur-md text-center py-4 text-sm text-gray-600">
+  <footer class="text-center py-6 text-sm text-accent">
     <p>&copy; 2025 JollyTech. All rights reserved.</p>
   </footer>
 
-  <!-- i18n script (непроменен) -->
-  <script>
-    const translations = {
-      /* ...тук твоите преводи... */
-    };
-    const select = document.getElementById('langSelect');
-    function translate(lang) {
-      const dict = translations[lang] || translations['bg'];
-      document.querySelectorAll('[data-i18n]').forEach(el=>{
-        const key = el.getAttribute('data-i18n');
-        if(dict[key]) el.textContent = dict[key];
-      });
-    }
-    select.addEventListener('change',e=>translate(e.target.value));
-    translate('bg');
-  </script>
 </body>
 </html>
