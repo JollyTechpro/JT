@@ -3,101 +3,275 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>JollyTech – Автоматизирана търговия</title>
+  <title>JollyTech – Automated Trading Platform</title>
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Custom palette -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              gold: '#d4af37',
+              goldLight: '#f5d87f',
+              dark: '#0d0d0d'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
   <style>
-    body {
-      background-color: #000;
-      color: #FFD700;
-    }
-    .gold-text {
-      color: #FFD700;
-    }
-    .gold-bg {
-      background-color: #FFD700;
-      color: #000;
-    }
-    .gold-border {
-      border-color: #FFD700;
-    }
-    .flag-select option {
-      background-color: #000;
-      color: #FFD700;
-    }
+    body { font-family: 'Inter', sans-serif; }
   </style>
 </head>
-<body class="antialiased">
-  <!-- Header -->
-  <header class="border-b gold-border py-4">
-    <div class="container mx-auto flex justify-between items-center px-4">
-      <h1 class="text-2xl font-bold gold-text">JollyTech</h1>
-      <select class="flag-select bg-black border gold-border px-3 py-1 rounded">
-        <option value="bg">Български</option>
-        <option value="en">English</option>
-        <option value="de">Deutsch</option>
-        <option value="es">Español</option>
-        <option value="it">Italiano</option>
-        <option value="tr">Türkçe</option>
-        <option value="gr">Ελληνικά</option>
-        <option value="ro">Română</option>
-        <option value="fr">Français</option>
+<body class="bg-brand-dark text-brand-gold leading-relaxed antialiased">
+  <!-- Navbar -->
+  <header class="border-b border-brand-gold/30 sticky top-0 backdrop-blur-sm z-10">
+    <div class="max-w-7xl mx-auto flex items-center justify-between px-4 py-3">
+      <a href="#" class="text-2xl font-extrabold tracking-tight gold-gradient">JollyTech</a>
+      <nav class="hidden md:flex space-x-6 text-sm font-medium">
+        <a href="#features" class="hover:text-brand-goldLight" data-i18n="navFeatures">Функции</a>
+        <a href="#pricing" class="hover:text-brand-goldLight" data-i18n="navPricing">Планове</a>
+        <a href="#workflow" class="hover:text-brand-goldLight" data-i18n="navHow">Как работи</a>
+        <a href="#contact" class="hover:text-brand-goldLight" data-i18n="navContact">Контакт</a>
+      </nav>
+      <select id="langSelect" class="bg-brand-dark border border-brand-gold/40 rounded px-3 py-1 text-sm focus:outline-none">
+        <option value="bg">BG</option>
+        <option value="en">EN</option>
+        <option value="de">DE</option>
+        <option value="es">ES</option>
+        <option value="it">IT</option>
+        <option value="tr">TR</option>
+        <option value="gr">GR</option>
+        <option value="ro">RO</option>
+        <option value="fr">FR</option>
       </select>
     </div>
   </header>
 
   <!-- Hero -->
-  <section class="text-center py-24 px-4">
-    <h2 class="text-4xl md:text-6xl font-extrabold mb-6 gold-text">Автоматизирана търговия с крипто и акции</h2>
-    <p class="max-w-xl mx-auto text-lg mb-10">Платформа за търговия чрез Binance и Alpaca – достъпна на 9 езика, със стил и сигурност.</p>
-    <a href="#signup" class="px-6 py-3 gold-bg rounded-xl font-semibold hover:opacity-90 transition">Започни безплатно</a>
+  <section class="relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-brand-gold/10 to-transparent"></div>
+    <div class="max-w-5xl mx-auto px-4 py-28 text-center relative">
+      <h1 data-i18n="heroTitle" class="text-4xl md:text-6xl font-extrabold mb-6">Автоматизирана търговия с крипто и акции</h1>
+      <p data-i18n="heroSubtitle" class="max-w-2xl mx-auto mb-10 text-lg text-brand-goldLight">Създавай, тествай и пускай търговски ботове за Binance & Alpaca без писане на код.</p>
+      <a href="#pricing" data-i18n="heroCTA" class="inline-block bg-brand-gold text-brand-dark font-semibold px-8 py-3 rounded-xl shadow hover:bg-brand-goldLight transition">Започни безплатно</a>
+    </div>
   </section>
 
   <!-- Features -->
-  <section id="features" class="py-20 px-4">
-    <h2 class="text-3xl font-bold text-center mb-12 gold-text">Ключови функции</h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-      <div class="p-6 border gold-border rounded-2xl">
-        <h3 class="text-xl font-semibold mb-2">Интеграция с Binance</h3>
-        <p>Търгувай над 350 крипто двойки с едно кликване.</p>
+  <section id="features" class="py-24 px-4">
+    <div class="max-w-6xl mx-auto">
+      <h2 data-i18n="featuresTitle" class="text-3xl font-bold text-center mb-14">Ключови функции</h2>
+      <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
+        <div class="border border-brand-gold/30 rounded-2xl p-6" data-i18n-group="feat1">
+          <h3 data-i18n="title" class="text-xl font-semibold mb-2">Интеграция с Binance</h3>
+          <p data-i18n="desc">Търгувай над 350 крипто двойки с едно кликване.</p>
+        </div>
+        <div class="border border-brand-gold/30 rounded-2xl p-6" data-i18n-group="feat2">
+          <h3 data-i18n="title" class="text-xl font-semibold mb-2">US акции чрез Alpaca</h3>
+          <p data-i18n="desc">Акции и ETF‑и без комисионни, 24/5 пазари.</p>
+        </div>
+        <div class="border border-brand-gold/30 rounded-2xl p-6" data-i18n-group="feat3">
+          <h3 data-i18n="title" class="text-xl font-semibold mb-2">Маркетплейс за стратегии</h3>
+          <p data-i18n="desc">Готови алгоритми или собствени ML модели.</p>
+        </div>
+        <div class="border border-brand-gold/30 rounded-2xl p-6" data-i18n-group="feat4">
+          <h3 data-i18n="title" class="text-xl font-semibold mb-2">Backtest 10+ години</h3>
+          <p data-i18n="desc">Мигновен анализ върху исторически данни.</p>
+        </div>
+        <div class="border border-brand-gold/30 rounded-2xl p-6" data-i18n-group="feat5">
+          <h3 data-i18n="title" class="text-xl font-semibold mb-2">24/7 Мониторинг</h3>
+          <p data-i18n="desc">Известия в уеб, мобилни и Telegram.</p>
+        </div>
+        <div class="border border-brand-gold/30 rounded-2xl p-6" data-i18n-group="feat6">
+          <h3 data-i18n="title" class="text-xl font-semibold mb-2">API & Webhooks</h3>
+          <p data-i18n="desc">Лесна интеграция с външни системи.</p>
+        </div>
       </div>
-      <div class="p-6 border gold-border rounded-2xl">
-        <h3 class="text-xl font-semibold mb-2">Алпака US Stocks</h3>
-        <p>Търгувай US акции без комисионни с Alpaca API.</p>
+    </div>
+  </section>
+
+  <!-- Workflow -->
+  <section id="workflow" class="bg-brand-dark/95 py-24 px-4 border-t border-brand-gold/20">
+    <div class="max-w-6xl mx-auto">
+      <h2 data-i18n="flowTitle" class="text-3xl font-bold text-center mb-14">Как работи</h2>
+      <div class="grid gap-10 md:grid-cols-3 text-center">
+        <div data-i18n-group="step1">
+          <div class="text-6xl mb-4">1</div>
+          <h3 data-i18n="title" class="text-xl font-semibold mb-2">Свържи борсите</h3>
+          <p data-i18n="desc">Добави API ключовете си за Binance и Alpaca.</p>
+        </div>
+        <div data-i18n-group="step2">
+          <div class="text-6xl mb-4">2</div>
+          <h3 data-i18n="title" class="text-xl font-semibold mb-2">Избери стратегия</h3>
+          <p data-i18n="desc">Избери готова или създай своя чрез визуален редактор.</p>
+        </div>
+        <div data-i18n-group="step3">
+          <div class="text-6xl mb-4">3</div>
+          <h3 data-i18n="title" class="text-xl font-semibold mb-2">Пусни и следи</h3>
+          <p data-i18n="desc">Активирай бота и наблюдавай резултатите в реално време.</p>
+        </div>
       </div>
-      <div class="p-6 border gold-border rounded-2xl">
-        <h3 class="text-xl font-semibold mb-2">Маркетплейс</h3>
-        <p>Избери готови стратегии или качи свои модели.</p>
-      </div>
-      <div class="p-6 border gold-border rounded-2xl">
-        <h3 class="text-xl font-semibold mb-2">Backtest 10+ години</h3>
-        <p>Тествай идеи върху исторически данни.</p>
-      </div>
-      <div class="p-6 border gold-border rounded-2xl">
-        <h3 class="text-xl font-semibold mb-2">24/7 Мониторинг</h3>
-        <p>Известия при действия, грешки и сигнали.</p>
-      </div>
-      <div class="p-6 border gold-border rounded-2xl">
-        <h3 class="text-xl font-semibold mb-2">API & Webhooks</h3>
-        <p>Свържи с външни системи, Discord, Telegram и др.</p>
+    </div>
+  </section>
+
+  <!-- Pricing (static BG & EN for demo) -->
+  <section id="pricing" class="py-24 px-4">
+    <div class="max-w-5xl mx-auto">
+      <h2 data-i18n="pricingTitle" class="text-3xl font-bold text-center mb-14">Планове</h2>
+      <div class="grid gap-8 md:grid-cols-3 text-center">
+        <div class="border border-brand-gold/30 rounded-2xl p-8 flex flex-col">
+          <h3 class="text-xl font-semibold mb-4" data-i18n="planStarter">Starter</h3>
+          <p class="text-4xl font-extrabold mb-4">0 €</p>
+          <ul class="space-y-2 flex-1 text-sm">
+            <li data-i18n="starter1">1 бот</li>
+            <li data-i18n="starter2">Demo Binance</li>
+          </ul>
+          <a href="#" class="mt-6 inline-block gold-bg px-4 py-2 rounded font-semibold hover:opacity-90" data-i18n="btnChoose">Избери</a>
+        </div>
+        <div class="border border-brand-gold rounded-2xl p-8 flex flex-col transform md:-translate-y-6 bg-brand-gold text-brand-dark">
+          <h3 class="text-xl font-semibold mb-4" data-i18n="planPro">Pro</h3>
+          <p class="text-4xl font-extrabold mb-4">49 €</p>
+          <ul class="space-y-2 flex-1 text-sm">
+            <li data-i18n="pro1">10 бота</li>
+            <li data-i18n="pro2">Live Binance & Alpaca</li>
+            <li data-i18n="pro3">Backtest 10 години</li>
+          </ul>
+          <a href="#" class="mt-6 inline-block bg-brand-dark text-brand-gold px-4 py-2 rounded font-semibold hover:opacity-90" data-i18n="btnChoose">Избери</a>
+        </div>
+        <div class="border border-brand-gold/30 rounded-2xl p-8 flex flex-col">
+          <h3 class="text-xl font-semibold mb-4" data-i18n="planEnt">Enterprise</h3>
+          <p class="text-4xl font-extrabold mb-4" data-i18n="entPrice">По договаряне</p>
+          <ul class="space-y-2 flex-1 text-sm">
+            <li data-i18n="ent1">Неограничени ботове</li>
+            <li data-i18n="ent2">SLA & White‑label</li>
+          </ul>
+          <a href="#contact" class="mt-6 inline-block gold-bg px-4 py-2 rounded font-semibold hover:opacity-90" data-i18n="btnContact">Контакт</a>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- Contact -->
-  <section id="contact" class="py-20 px-4">
-    <h2 class="text-3xl font-bold text-center mb-12 gold-text">Контакт</h2>
-    <form action="mailto:info@jollytech.pro" method="post" enctype="text/plain" class="max-w-xl mx-auto bg-black border gold-border p-8 rounded-xl space-y-4">
-      <input type="text" name="name" placeholder="Име" required class="w-full p-2 border gold-border bg-black text-yellow-400 rounded">
-      <input type="email" name="email" placeholder="Имейл" required class="w-full p-2 border gold-border bg-black text-yellow-400 rounded">
-      <textarea name="message" rows="5" placeholder="Съобщение" required class="w-full p-2 border gold-border bg-black text-yellow-400 rounded"></textarea>
-      <button type="submit" class="w-full py-2 gold-bg font-bold rounded hover:opacity-90">Изпрати</button>
-    </form>
+  <section id="contact" class="py-24 px-4 border-t border-brand-gold/20">
+    <div class="max-w-xl mx-auto">
+      <h2 data-i18n="contactTitle" class="text-3xl font-bold text-center mb-10">Свържи се с нас</h2>
+      <form action="mailto:info@jollytech.pro" method="post" enctype="text/plain" class="space-y-5">
+        <input type="text" name="name" required placeholder="Име" class="w-full bg-brand-dark border border-brand-gold/40 rounded p-3 placeholder-brand-gold/60">
+        <input type="email" name="email" required placeholder="Имейл" class="w-full bg-brand-dark border border-brand-gold/40 rounded p-3 placeholder-brand-gold/60">
+        <textarea name="message" required rows="5" placeholder="Съобщение" class="w-full bg-brand-dark border border-brand-gold/40 rounded p-3 placeholder-brand-gold/60"></textarea>
+        <button type="submit" class="w-full gold-bg py-3 rounded font-semibold hover:opacity-90" data-i18n="btnSend">Изпрати</button>
+      </form>
+    </div>
   </section>
 
   <!-- Footer -->
-  <footer class="py-6 border-t gold-border text-sm text-center">
-    <p>&copy; 2025 JollyTech. Всички права запазени.</p>
-    <p class="mt-2">Търговията с финансови инструменти носи риск. Няма гаранция за печалба.</p>
+  <footer class="py-6 border-t border-brand-gold/20 text-xs text-center">
+    <p>&copy; 2025 JollyTech. All rights reserved.</p>
   </footer>
+
+  <!-- i18n JS -->
+  <script>
+    const translations = {
+      bg: {
+        navFeatures: 'Функции',
+        navPricing: 'Планове',
+        navHow: 'Как работи',
+        navContact: 'Контакт',
+        heroTitle: 'Автоматизирана търговия с крипто и акции',
+        heroSubtitle: 'Създавай, тествай и пускай търговски ботове за Binance & Alpaca без писане на код.',
+        heroCTA: 'Започни безплатно',
+        featuresTitle: 'Ключови функции',
+        flowTitle: 'Как работи',
+        pricingTitle: 'Планове',
+        planStarter: 'Starter',
+        starter1: '1 бот',
+        starter2: 'Demo Binance',
+        planPro: 'Pro',
+        pro1: '10 бота',
+        pro2: 'Live Binance & Alpaca',
+        pro3: 'Backtest 10 години',
+        planEnt: 'Enterprise',
+        entPrice: 'По договаряне',
+        ent1: 'Неограничени ботове',
+        ent2: 'SLA & White‑label',
+        btnChoose: 'Избери',
+        btnContact: 'Контакт',
+        contactTitle: 'Свържи се с нас',
+        btnSend: 'Изпрати',
+        // steps
+        'step1.title':'Свържи борсите','step1.desc':'Добави API ключовете си за Binance и Alpaca.',
+        'step2.title':'Избери стратегия','step2.desc':'Избери готова или създай своя чрез визуален редактор.',
+        'step3.title':'Пусни и следи','step3.desc':'Активирай бота и наблюдавай резултатите в реално време.'
+      },
+      en: {
+        navFeatures: 'Features',
+        navPricing: 'Pricing',
+        navHow: 'Workflow',
+        navContact: 'Contact',
+        heroTitle: 'Automated trading for crypto & stocks',
+        heroSubtitle: 'Create, test and deploy trading bots for Binance & Alpaca — no code needed.',
+        heroCTA: 'Start free',
+        featuresTitle: 'Key Features',
+        flowTitle: 'How it works',
+        pricingTitle: 'Plans',
+        planStarter: 'Starter',
+        starter1: '1 bot',
+        starter2: 'Demo Binance',
+        planPro: 'Pro',
+        pro1: '10 bots',
+        pro2: 'Live Binance & Alpaca',
+        pro3: 'Backtest 10 yrs',
+        planEnt: 'Enterprise',
+        entPrice: 'Custom',
+        ent1: 'Unlimited bots',
+        ent2: 'SLA & White‑label',
+        btnChoose: 'Choose',
+        btnContact: 'Contact',
+        contactTitle: 'Get in touch',
+        btnSend: 'Send',
+        'step1.title':'Connect exchanges','step1.desc':'Add your API keys for Binance and Alpaca.',
+        'step2.title':'Pick a strategy','step2.desc':'Choose a template or build visually.',
+        'step3.title':'Launch & monitor','step3.desc':'Run the bot and watch live results.'
+      }
+      // Останалите езици могат да наследят английския
+    };
+
+    const defaultLang = 'bg';
+    const select = document.getElementById('langSelect');
+
+    function translate(lang) {
+      const dict = { ...translations['en'], ...translations[lang] }; // fallback
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (dict[key]) el.textContent = dict[key];
+      });
+      document.querySelectorAll('[data-i18n-group]').forEach(groupEl => {
+        const group = groupEl.getAttribute('data-i18n-group');
+        groupEl.querySelectorAll('[data-i18n]').forEach(child => {
+          const subKey = `${group}.${child.getAttribute('data-i18n')}`;
+          if (dict[subKey]) child.textContent = dict[subKey];
+        });
+      });
+    }
+
+    select.addEventListener('change', e => {
+      translate(e.target.value);
+    });
+
+    // Initial load
+    select.value = defaultLang;
+    translate(defaultLang);
+  </script>
 </body>
 </html>
