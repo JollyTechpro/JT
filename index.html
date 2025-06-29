@@ -30,7 +30,6 @@
     body { font-family: 'Inter', sans-serif; }
   </style>
 </head>
-
 <body class="bg-background text-accent antialiased">
 
   <!-- Navbar -->
@@ -182,6 +181,8 @@
         <button type="submit"
                 class="w-full bg-accent hover:bg-accentLight text-primaryLight px-4 py-2 rounded">
           Изпрати
+ 
+
         </button>
       </form>
     </div>
@@ -191,39 +192,5 @@
   <footer class="py-6 text-center text-sm text-accentLight border-t border-accent">
     <p>&copy; 2025 JollyTech. All rights reserved.</p>
   </footer>
-
-  <!-- i18n Script -->
-  <script>
-    const translations = {
-      bg: { /* ... */ },
-      en: { /* ... */ },
-      de: { /* ... */ },
-      es: { /* ... */ },
-      it: { /* ... */ },
-      tr: { /* ... */ },
-      gr: { /* ... */ },
-      ro: { /* ... */ },
-      fr: { /* ... */ }
-    };
-    const select = document.getElementById('langSelect');
-    function translate(lang) {
-      // ако няма превод, dict е празен обект
-      const dict = translations[lang] || {};
-      document.querySelectorAll('[data-i18n]').forEach(el => {
-        const key = el.getAttribute('data-i18n');
-        if (dict[key]) el.textContent = dict[key];
-      });
-      document.querySelectorAll('[data-i18n-group]').forEach(groupEl => {
-        const grp = groupEl.getAttribute('data-i18n-group');
-        groupEl.querySelectorAll('[data-i18n]').forEach(ch => {
-          const sub = `${grp}.${ch.getAttribute('data-i18n')}`;
-          if (dict[sub]) ch.textContent = dict[sub];
-        });
-      });
-    }
-    select.addEventListener('change', e => translate(e.target.value));
-    translate('bg');
-  </script>
-
 </body>
 </html>
