@@ -15,11 +15,11 @@
       theme: {
         extend: {
           colors: {
-            primary: '#0d9488',    // teal-600
-            primaryLight: '#5eead4', // teal-300
-            accent: '#f97316',      // orange-500
-            background: '#f8fafc',  // gray-50
-            text: '#334155'         // slate-700
+            primary: '#007BA7',        // Turkish Blue
+            primaryLight: '#4EA8DE',   // Lighter Turkish Blue
+            accent: '#E0E0E0',         // Dark White (off-white)
+            background: '#E0E0E0',     // Off-white background
+            text: '#1F2937'            // Dark gray for text
           }
         }
       }
@@ -294,9 +294,8 @@
       const exchange = document.getElementById('exchange').value;
       const apiKey = document.getElementById('apiKey').value;
       const apiSecret = document.getElementById('apiSecret').value;
-      alert(`Свързване към ${exchange}...`);
+      // Display confirmation using correct translation key
+      const dict = translations[select.value] || translations['en'];
+      alert(dict['step1.title'] || 'Connected');
       // TODO: call backend endpoint
     });
-  </script>
-</body>
-</html>
