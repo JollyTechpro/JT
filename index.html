@@ -37,7 +37,6 @@
   <header class="bg-primaryLight">
     <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
       <div class="flex items-center">
-        <!-- снeти logo.png от същата папка -->
         <img src="./logo.png" alt="JollyTech Logo" class="h-10 w-auto mr-2">
         <span class="text-accent text-2xl font-semibold">JollyTech</span>
       </div>
@@ -195,10 +194,21 @@
 
   <!-- i18n Script -->
   <script>
-    const translations = { /* твоите преводи */ };
+    const translations = {
+      bg: { /* ... */ },
+      en: { /* ... */ },
+      de: { /* ... */ },
+      es: { /* ... */ },
+      it: { /* ... */ },
+      tr: { /* ... */ },
+      gr: { /* ... */ },
+      ro: { /* ... */ },
+      fr: { /* ... */ }
+    };
     const select = document.getElementById('langSelect');
     function translate(lang) {
-      const dict = translations[lang] || translations['en'];
+      // ако няма превод, dict е празен обект
+      const dict = translations[lang] || {};
       document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
         if (dict[key]) el.textContent = dict[key];
