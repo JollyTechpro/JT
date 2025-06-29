@@ -26,23 +26,28 @@
       }
     }
   </script>
-  <style>body { font-family: 'Inter', sans-serif; }</style>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+  </style>
 </head>
-<body class="bg-background text-text antialiased">
+<body class="text-text antialiased
+    bg-[url('logo/logo.png')] bg-cover bg-center bg-fixed">
 
   <!-- Navbar -->
-  <header class="sticky top-0 z-30 bg-white/90 backdrop-blur">
+  <header class="sticky top-0 z-30 bg-white/80 backdrop-blur-md">
     <div class="max-w-7xl mx-auto flex items-center justify-between px-4 py-3">
-      <!-- Logo in navbar -->
+      <!-- Малко лого + текст -->
       <a href="#" class="flex items-center space-x-2">
         <img src="logo/logo.png" alt="JollyTech" class="h-8 w-8 object-contain"/>
         <span class="text-xl font-semibold text-primary">JollyTech</span>
       </a>
       <nav class="hidden md:flex space-x-6 text-sm font-medium text-primaryLight">
-        <a href="#features" class="hover:text-accentLight">Функции</a>
-        <a href="#workflow" class="hover:text-accentLight">Как работи</a>
-        <a href="#pricing" class="hover:text-accentLight">Планове</a>
-        <a href="#contact" class="hover:text-accentLight">Контакт</a>
+        <a href="#features" class="hover:text-accentLight" data-i18n="navFeatures">Функции</a>
+        <a href="#workflow" class="hover:text-accentLight" data-i18n="navHow">Как работи</a>
+        <a href="#pricing" class="hover:text-accentLight" data-i18n="navPricing">Планове</a>
+        <a href="#contact" class="hover:text-accentLight" data-i18n="navContact">Контакт</a>
       </nav>
       <select id="langSelect" class="border border-gray-300 rounded px-2 py-1 text-sm focus:outline-none">
         <option value="bg">BG</option>
@@ -51,11 +56,8 @@
     </div>
   </header>
 
-  <!-- Hero with central logo -->
-  <section class="relative flex flex-col items-center justify-center text-center py-32 px-4 bg-primary/80">
-    <!-- Central logo -->
-    <img src="logo/logo.png" alt="JollyTech Logo" class="h-24 w-24 mb-6"/>
-
+  <!-- Hero -->
+  <section class="flex flex-col items-center justify-center text-center py-32 px-4 bg-primary/80">
     <h1 data-i18n="heroTitle" class="text-4xl md:text-6xl font-bold mb-4 text-white">
       Автоматизирана търговия с крипто и акции
     </h1>
@@ -70,7 +72,9 @@
 
   <!-- Features -->
   <section id="features" class="py-24 px-4 bg-white">
-    <h2 data-i18n="featuresTitle" class="text-3xl font-bold text-center mb-12 text-primary">Ключови функции</h2>
+    <h2 data-i18n="featuresTitle" class="text-3xl font-bold text-center mb-12 text-primary">
+      Ключови функции
+    </h2>
     <div class="max-w-6xl mx-auto grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
       <div class="border p-6 rounded-lg hover:shadow-lg transition">
         <h3 class="text-xl font-semibold mb-2">Интеграция с борси</h3>
@@ -164,13 +168,25 @@
   </section>
 
   <!-- Footer -->
-  <footer class="bg-white/90 backdrop-blur text-center py-4 text-sm text-gray-600">
+  <footer class="bg-white/80 backdrop-blur-md text-center py-4 text-sm text-gray-600">
     <p>&copy; 2025 JollyTech. All rights reserved.</p>
   </footer>
 
   <!-- i18n script (непроменен) -->
   <script>
-    // ...translate() код...
+    const translations = {
+      /* ...тук твоите преводи... */
+    };
+    const select = document.getElementById('langSelect');
+    function translate(lang) {
+      const dict = translations[lang] || translations['bg'];
+      document.querySelectorAll('[data-i18n]').forEach(el=>{
+        const key = el.getAttribute('data-i18n');
+        if(dict[key]) el.textContent = dict[key];
+      });
+    }
+    select.addEventListener('change',e=>translate(e.target.value));
+    translate('bg');
   </script>
 </body>
 </html>
