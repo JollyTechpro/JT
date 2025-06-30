@@ -3,246 +3,244 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>JollyTech — AI Trading Bots</title>
+  <title>JollyTech — Trading Bots</title>
+
+  <!-- Google Font: Nunito (по-заоблен) -->
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+
   <style>
-    :root {
-      --bg: #0A0F1E;
-      --accent: #1DE9B6;
-      --accent-dark: #00BFA5;
-      --text: #E5E5E5;
-      --text-muted: #888;
-      --btn-bg: #1DE9B6;
-      --btn-hover: #00BFA5;
+    :root{
+      --bg:#000000;
+      --text:#1DE9B6;
+      --text-dark:#000000;
     }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: 'Nunito', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      font-family:'Nunito',sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
     }
-    a { text-decoration: none; color: inherit; }
+    /* header */
+    header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      padding:1rem 2rem;
+      background:rgba(0,0,0,.95);
+      border-bottom:1px solid var(--text);
+    }
+    /* ляв блок: лого + меню */
+    .left-group{
+      display:flex;
+      align-items:center;
+      gap:.85rem;
+      flex-wrap:wrap;
+    }
+    .left-group img{height:45px;width:auto}
+    .left-group a{
+      border:1px solid var(--text);
+      border-radius:6px;
+      padding:.45rem .9rem;
+      background:transparent;
+      color:var(--text);
+      text-decoration:none;
+      font-size:.9rem;
+      cursor:pointer;
+    }
+    .left-group a:hover{background:var(--text);color:var(--text-dark)}
 
-    /* HEADER */
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 2rem;
-    }
-    .logo-brand {
-      display: flex;
-      align-items: center;
-      gap: .6rem;
-    }
-    .logo-brand img {
-      height: 40px;
-      width: auto;
-    }
-    .logo-brand .brand {
-      font-size: 1.5rem;
-      font-weight: 700;
-      background: linear-gradient(90deg, var(--accent), var(--accent-dark));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    nav a {
-      margin-left: 1.5rem;
-      font-weight: 600;
-      color: var(--text-muted);
-      transition: color .2s;
-    }
-    nav a:hover { color: var(--accent); }
-
-    /* HERO */
-    .hero {
-      text-align: center;
-      padding: 4rem 1rem;
-    }
-    .hero h1 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-    }
-    .hero p {
-      font-size: 1.1rem;
-      max-width: 600px;
-      margin: 0 auto 2rem;
-      color: var(--text-muted);
-    }
-    .hero .btn {
-      display: inline-block;
-      background: var(--btn-bg);
-      color: var(--bg);
-      padding: .8rem 1.8rem;
-      border-radius: 6px;
-      font-weight: 700;
-      transition: background .2s;
-    }
-    .hero .btn:hover { background: var(--btn-hover); }
-
-    /* FEATURES */
-    .features {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px,1fr));
-      gap: 2rem;
-      padding: 2rem 1rem;
-      max-width: 960px;
-      margin: 0 auto;
-    }
-    .feature {
-      background: rgba(255,255,255, .05);
-      padding: 1.8rem;
-      border-radius: 8px;
-      text-align: center;
-    }
-    .feature .icon {
-      font-size: 2rem;
-      color: var(--accent);
-      margin-bottom: .8rem;
-    }
-    .feature h3 {
-      margin-bottom: .6rem;
-      font-size: 1.2rem;
-    }
-    .feature p {
-      color: var(--text-muted);
-      font-size: .95rem;
+    /* център – JollyTech */
+    .brand{
+      font-size:1.5rem;
+      font-weight:700;
+      text-align:center;
+      flex:1 1 auto;
     }
 
-    /* PRICING */
-    .pricing {
-      padding: 3rem 1rem;
-      background: rgba(255,255,255, .03);
+    /* десен блок – език */
+    .right-group{
+      display:flex;
+      align-items:center;
+      gap:.75rem;
     }
-    .pricing h2 {
-      text-align: center;
-      margin-bottom: 2rem;
-      font-size: 2rem;
+    select{
+      border:1px solid var(--text);
+      border-radius:6px;
+      padding:.45rem .9rem;
+      background:transparent;
+      color:var(--text);
+      font-size:.9rem;
+      cursor:pointer;
+      appearance:none;
+      background-image:url("data:image/svg+xml,%3Csvg fill='%231DE9B6' height='12' viewBox='0 0 24 24' width='12' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+      background-repeat:no-repeat;
+      background-position:right .4rem center;
+      padding-right:1.8rem;
     }
-    .plans {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
-      gap: 1.5rem;
-      max-width: 960px;
-      margin: 0 auto;
-    }
-    .plan {
-      background: var(--bg);
-      border: 1px solid var(--accent);
-      border-radius: 8px;
-      padding: 1.8rem;
-      text-align: center;
-    }
-    .plan h4 {
-      margin-bottom: .5rem;
-      font-size: 1.3rem;
-    }
-    .plan .price {
-      font-size: 1.6rem;
-      font-weight: 700;
-      margin: .8rem 0;
-    }
-    .plan p {
-      font-size: .95rem;
-      color: var(--text-muted);
-      margin-bottom: 1.2rem;
-    }
-    .plan .btn {
-      background: var(--accent);
-      color: var(--bg);
-      padding: .6rem 1.4rem;
-      border-radius: 6px;
-      font-weight: 600;
-      transition: background .2s;
-    }
-    .plan .btn:hover { background: var(--accent-dark); }
+    select:hover{background:var(--text);color:var(--text-dark)}
 
-    /* FOOTER */
-    footer {
-      text-align: center;
-      padding: 2rem 1rem;
-      font-size: .85rem;
-      color: var(--text-muted);
+    /* секции */
+    section{display:none;padding:3rem 1.5rem;text-align:center;max-width:960px;margin:0 auto}
+    section.active{display:block}
+    h1,h2{margin-bottom:1.2rem}
+    .btn{
+      display:inline-block;
+      background:var(--text);
+      color:var(--text-dark);
+      padding:.8rem 1.6rem;
+      border-radius:8px;
+      font-weight:700;
+      text-decoration:none;
+      margin-top:1.2rem;
     }
-    footer a { color: var(--accent); }
-
-    @media (max-width: 640px) {
-      .hero h1 { font-size: 2rem; }
+    /* карти / форми */
+    .cards{display:flex;flex-wrap:wrap;justify-content:center;gap:1.5rem}
+    .card{border:1px solid var(--text);border-radius:10px;padding:1.5rem;width:280px}
+    form{max-width:400px;margin:0 auto;text-align:left}
+    form label{display:block;margin:1rem 0 .3rem}
+    form input,form select{
+      width:100%;padding:.6rem;border:1px solid var(--text);border-radius:6px;
+      background:transparent;color:var(--text);
+    }
+    form button{margin-top:1.2rem}
+    footer{margin-top:auto;text-align:center;padding:1.8rem;font-size:.85rem;opacity:.65}
+    @media(max-width:640px){
+      .brand{flex-basis:100%;margin:1rem 0}
+      .left-group{justify-content:center}
     }
   </style>
 </head>
 <body>
 
-  <!-- HEADER -->
+  <!-- === HEADER === -->
   <header>
-    <div class="logo-brand">
-      <img src="logo.png" alt="JollyTech Logo">
-      <div class="brand">JollyTech</div>
+    <div class="left-group">
+      <img src="logo.png" alt="Logo">
+      <a data-target="login"    data-i18n="nav_login"></a>
+      <a data-target="register" data-i18n="nav_register"></a>
+      <a data-target="pricing"  data-i18n="nav_pricing"></a>
+      <a data-target="settings" data-i18n="nav_settings"></a>
+      <a data-target="dashboard"data-i18n="nav_dashboard"></a>
     </div>
-    <nav>
-      <a href="#features">Функции</a>
-      <a href="#pricing">Цени</a>
-      <a href="#contact">Контакт</a>
-    </nav>
+
+    <div class="brand">JollyTech</div>
+
+    <div class="right-group">
+      <select id="lang-select">
+        <option value="bg">BG</option><option value="en">EN</option><option value="de">DE</option>
+        <option value="es">ES</option><option value="fr">FR</option><option value="tr">TR</option>
+        <option value="ro">RO</option><option value="ru">RU</option><option value="gr">GR</option>
+        <option value="it">IT</option>
+      </select>
+    </div>
   </header>
 
-  <!-- HERO -->
-  <section class="hero">
-    <h1>AI Trading Bots за всеки</h1>
-    <p>Създайте, тествайте и пуснете свои собствени ботове за търговия с крипто и акции—цялата мощ на AI в една платформа.</p>
-    <a href="#pricing" class="btn">Започнете безплатно</a>
+  <!-- === СЕКЦИИ === -->
+  <section id="login" class="active">
+    <h1 data-i18n="login_title"></h1>
+    <form>
+      <label data-i18n="login_email"></label>
+      <input type="email" required>
+      <label data-i18n="login_pass"></label>
+      <input type="password" required>
+      <button class="btn" type="submit" data-i18n="login_btn"></button>
+    </form>
   </section>
 
-  <!-- FEATURES -->
-  <section id="features" class="features">
-    <div class="feature">
-      <div class="icon">🤖</div>
-      <h3>Интелигентни стратегии</h3>
-      <p>Използвайте готови AI-модели или обучете свои собствени алгоритми за оптимална печалба.</p>
-    </div>
-    <div class="feature">
-      <div class="icon">📊</div>
-      <h3>Реално време</h3>
-      <p>Следете пазара в реално време с графики и аларми директно в таблото.</p>
-    </div>
-    <div class="feature">
-      <div class="icon">🔒</div>
-      <h3>Сигурност</h3>
-      <p>Всички ваши данни и ключове се съхраняват криптирано в защитена среда.</p>
-    </div>
+  <section id="register">
+    <h1 data-i18n="reg_title"></h1>
+    <p  data-i18n="reg_desc"></p>
+    <form>
+      <label data-i18n="reg_email"></label>
+      <input type="email" required>
+      <label data-i18n="reg_pass"></label>
+      <input type="password" required>
+      <button class="btn" type="submit" data-i18n="reg_btn"></button>
+    </form>
   </section>
 
-  <!-- PRICING -->
-  <section id="pricing" class="pricing">
-    <h2>Планове &amp; Цени</h2>
-    <div class="plans">
-      <div class="plan">
-        <h4>Free</h4>
-        <div class="price">0 лв/мес</div>
-        <p>1 бот • Демо режим • Основни стратегии</p>
-        <a href="#" class="btn">Регистрация</a>
-      </div>
-      <div class="plan">
-        <h4>Pro</h4>
-        <div class="price">29 лв/мес</div>
-        <p>5 бота • Live търговия • Пълна аналитика</p>
-        <a href="#" class="btn">Регистрация</a>
-      </div>
-      <div class="plan">
-        <h4>Enterprise</h4>
-        <div class="price">По договаряне</div>
-        <p>Неограничени ботове • Приоритетна поддръжка • API достъп</p>
-        <a href="#" class="btn">Свържете се</a>
-      </div>
+  <section id="pricing">
+    <h2 data-i18n="price_title"></h2>
+    <div class="cards">
+      <div class="card"><h3>Free</h3><p data-i18n="price_free"></p></div>
+      <div class="card"><h3>Pro</h3><p data-i18n="price_pro"></p></div>
+      <div class="card"><h3>Enterprise</h3><p data-i18n="price_ent"></p></div>
     </div>
   </section>
 
-  <!-- FOOTER -->
-  <footer id="contact">
-    Имаш въпроси? Пиши ни на <a href="mailto:support@jollytech.pro">support@jollytech.pro</a><br>
-    © 2025 JollyTech.pro — Всички права запазени
-  </footer>
+  <section id="settings">
+    <h2 data-i18n="set_title"></h2>
+    <form>
+      <label data-i18n="set_platform"></label>
+      <select><option>Binance</option><option>Alpaca</option></select>
+      <label data-i18n="set_asset"></label>
+      <select><option data-i18n="asset_crypto"></option><option data-i18n="asset_stock"></option></select>
+      <label data-i18n="set_strategy"></label>
+      <select><option>RSI</option><option>MACD</option><option>SMA</option></select>
+      <button class="btn" type="submit" data-i18n="set_save"></button>
+    </form>
+  </section>
 
+  <section id="dashboard">
+    <h2 data-i18n="dash_title"></h2>
+    <p  data-i18n="dash_desc"></p>
+    <div class="cards">
+      <div class="card"><h3>BTC-USDT</h3><p>+4.2 %</p></div>
+      <div class="card"><h3>AAPL</h3><p>-1.1 %</p></div>
+      <div class="card"><h3>ETH-USDT</h3><p>+2.8 %</p></div>
+    </div>
+  </section>
+
+  <footer data-i18n="footer_txt"></footer>
+
+  <!-- === JS === -->
+  <script>
+    /* ---------- Преводи ---------- */
+    const T={
+      bg:{nav_login:"Вход",nav_register:"Регистрация",nav_pricing:"Цени",nav_settings:"Настройки",nav_dashboard:"Табло",
+          login_title:"Вход в системата",login_email:"Имейл",login_pass:"Парола",login_btn:"Вход",
+          reg_title:"Създай безплатен акаунт",reg_desc:"Регистрирай се и търгувай с AI ботове за крипто и акции.",
+          reg_email:"Имейл",reg_pass:"Парола",reg_btn:"Регистрация",
+          price_title:"Планове и цени",price_free:"0 лв/мес — 1 бот, демо",price_pro:"29 лв/мес — 5 бота, live",price_ent:"89 лв/мес — неограничени ботове",
+          set_title:"Настройка на бота",set_platform:"Платформа",set_asset:"Актив",asset_crypto:"Крипто",asset_stock:"Акции",
+          set_strategy:"Стратегия",set_save:"Запази",dash_title:"Dashboard",dash_desc:"Резултати в реално време",
+          footer_txt:"© 2025 JollyTech.pro — Всички права запазени"},
+      en:{nav_login:"Login",nav_register:"Register",nav_pricing:"Pricing",nav_settings:"Settings",nav_dashboard:"Dashboard",
+          login_title:"Sign in",login_email:"Email",login_pass:"Password",login_btn:"Login",
+          reg_title:"Create a Free Account",reg_desc:"Trade crypto & stocks with AI bots.",
+          reg_email:"Email",reg_pass:"Password",reg_btn:"Sign Up",
+          price_title:"Plans & Pricing",price_free:"Free — 1 bot, demo",price_pro:"$29/mo — 5 bots, live",price_ent:"$89/mo — unlimited bots",
+          set_title:"Bot Configuration",set_platform:"Platform",set_asset:"Asset",asset_crypto:"Crypto",asset_stock:"Stocks",
+          set_strategy:"Strategy",set_save:"Save",dash_title:"Dashboard",dash_desc:"Realtime results",
+          footer_txt:"© 2025 JollyTech.pro — All rights reserved"}
+      /* (Добави останалите езици при нужда) */
+    };
+
+    /* ---------- Превод ---------- */
+    function translate(lang){
+      const d=T[lang]||T.bg;
+      document.querySelectorAll('[data-i18n]').forEach(el=>{
+        const k=el.dataset.i18n;
+        if(d[k]) el.innerText=d[k];
+      });
+      document.documentElement.lang=lang;
+    }
+    /* ---------- Навигация ---------- */
+    document.querySelectorAll('header a[data-target]').forEach(a=>{
+      a.addEventListener('click',e=>{
+        const id=a.dataset.target;
+        document.querySelectorAll('section').forEach(s=>s.classList.remove('active'));
+        document.getElementById(id).classList.add('active');
+        window.scrollTo({top:0,behavior:'smooth'});
+      });
+    });
+    /* ---------- dropdown език ---------- */
+    document.getElementById('lang-select').addEventListener('change',e=>translate(e.target.value));
+    translate('bg'); /* стартов */
+  </script>
 </body>
 </html>
