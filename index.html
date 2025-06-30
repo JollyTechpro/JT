@@ -1,166 +1,229 @@
 <!DOCTYPE html>
 <html lang="bg">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>JollyTech – Automated Trading Platform</title>
-  <!-- Google Font -->
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
-  <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            primary: '#0e1a2b',      // тъмно синьо
-            accent: '#00cba9',       // тюркоазено
-            accentLight: '#4fe8cb',
-            text: '#00cba9'
-          }
-        }
-      }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>JollyTech — Trading Bots</title>
+  <!-- Google Font: Nunito (по-заоблен) -->
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#000000;
+      --text:#1DE9B6;
+      --text-dark:#000000;
     }
-  </script>
-  <style>body { font-family: 'Inter', sans-serif; }</style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      font-family:'Nunito',sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
+    }
+    /* header */
+    header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      padding:1rem 2rem;
+      background:rgba(0,0,0,.95);
+      border-bottom:1px solid var(--text);
+    }
+    /* ляв блок: лого + меню */
+    .left-group{
+      display:flex;
+      align-items:center;
+      gap:.85rem;
+      flex-wrap:wrap;
+    }
+    .left-group img{height:45px;width:auto}
+    .left-group a{
+      border:1px solid var(--text);
+      border-radius:6px;
+      padding:.45rem .9rem;
+      background:transparent;
+      color:var(--text);
+      text-decoration:none;
+      font-size:.9rem;
+      cursor:pointer;
+    }
+    .left-group a:hover{background:var(--text);color:var(--text-dark)}
+    /* център – JollyTech */
+    .brand{
+      font-size:1.5rem;
+      font-weight:700;
+      text-align:center;
+      flex:1 1 auto;
+    }
+    /* десен блок – език */
+    .right-group{
+      display:flex;
+      align-items:center;
+      gap:.75rem;
+    }
+    select{
+      border:1px solid var(--text);
+      border-radius:6px;
+      padding:.45rem .9rem;
+      background:transparent;
+      color:var(--text);
+      font-size:.9rem;
+      cursor:pointer;
+      appearance:none;
+      background-image:url("data:image/svg+xml,%3Csvg fill='%231DE9B6' height='12' viewBox='0 0 24 24' width='12' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+      background-repeat:no-repeat;
+      background-position:right .4rem center;
+      padding-right:1.8rem;
+    }
+    select:hover{background:var(--text);color:var(--text-dark)}
+    /* секции */
+    section{display:none;padding:3rem 1.5rem;text-align:center;max-width:960px;margin:0 auto}
+    section.active{display:block}
+    h1,h2{margin-bottom:1.2rem}
+    .btn{
+      display:inline-block;
+      background:var(--text);
+      color:var(--text-dark);
+      padding:.8rem 1.6rem;
+      border-radius:8px;
+      font-weight:700;
+      text-decoration:none;
+      margin-top:1.2rem;
+    }
+    /* карти / форми */
+    .cards{display:flex;flex-wrap:wrap;justify-content:center;gap:1.5rem}
+    .card{border:1px solid var(--text);border-radius:10px;padding:1.5rem;width:280px}
+    form{max-width:400px;margin:0 auto;text-align:left}
+    form label{display:block;margin:1rem 0 .3rem}
+    form input,form select{
+      width:100%;padding:.6rem;border:1px solid var(--text);border-radius:6px;
+      background:transparent;color:var(--text);
+    }
+    form button{margin-top:1.2rem}
+    footer{margin-top:auto;text-align:center;padding:1.8rem;font-size:.85rem;opacity:.65}
+    @media(max-width:640px){
+      .brand{flex-basis:100%;margin:1rem 0}
+      .left-group{justify-content:center}
+    }
+  </style>
 </head>
-<body class="bg-primary text-text antialiased">
-
-  <!-- Navbar -->
-  <header class="bg-primary/80 backdrop-blur-sm sticky top-0 z-20">
-    <div class="max-w-7xl mx-auto flex items-center justify-between px-4 py-3">
-      <!-- Лого + заглавие -->
-      <a href="#" class="flex items-center space-x-2">
-        <img src="logo/logo.png" alt="JollyTech" class="h-8 w-8"/>
-        <span class="text-xl font-semibold">JollyTech</span>
-      </a>
-      <nav class="hidden md:flex space-x-6 text-sm font-medium">
-        <a href="#features" class="hover:text-accentLight">Функции</a>
-        <a href="#workflow" class="hover:text-accentLight">Как работи</a>
-        <a href="#pricing" class="hover:text-accentLight">Планове</a>
-        <a href="#contact" class="hover:text-accentLight">Контакт</a>
-      </nav>
-      <select id="langSelect" class="border border-accent rounded px-2 py-1 text-sm bg-primary focus:outline-none">
-        <option value="bg">BG</option>
-        <option value="en">EN</option>
+<body>
+  <!-- === HEADER === -->
+  <header>
+    <div class="left-group">
+      <img src="logo.png" alt="Logo">
+      <a data-target="login"    data-i18n="nav_login"></a>
+      <a data-target="register" data-i18n="nav_register"></a>
+      <a data-target="pricing"  data-i18n="nav_pricing"></a>
+      <a data-target="settings" data-i18n="nav_settings"></a>
+      <a data-target="dashboard"data-i18n="nav_dashboard"></a>
+    </div>
+    <div class="brand">JollyTech</div>
+    <div class="right-group">
+      <select id="lang-select">
+        <option value="bg">BG</option><option value="en">EN</option><option value="de">DE</option>
+        <option value="es">ES</option><option value="fr">FR</option><option value="tr">TR</option>
+        <option value="ro">RO</option><option value="ru">RU</option><option value="gr">GR</option>
+        <option value="it">IT</option>
       </select>
     </div>
   </header>
-
-  <!-- Hero -->
-  <section class="flex flex-col items-center justify-center text-center py-32 px-4">
-    <img src="logo/logo.png" alt="JollyTech Logo" class="h-24 w-24 mb-6"/>
-    <h1 class="text-4xl md:text-6xl font-bold mb-4">Автоматизирана търговия с крипто и акции</h1>
-    <p class="text-lg mb-8 max-w-2xl mx-auto">Създавай, тествай и стартирай ботове за Binance & Alpaca — без писане на код.</p>
-    <a href="#workflow" class="bg-accent text-primary px-6 py-3 rounded-md hover:bg-accentLight transition font-medium">
-      Започни безплатно
-    </a>
+  <!-- === СЕКЦИИ === -->
+  <section id="login" class="active">
+    <h1 data-i18n="login_title"></h1>
+    <form>
+      <label data-i18n="login_email"></label>
+      <input type="email" required>
+      <label data-i18n="login_pass"></label>
+      <input type="password" required>
+      <button class="btn" type="submit" data-i18n="login_btn"></button>
+    </form>
   </section>
-
-  <!-- Features -->
-  <section id="features" class="py-24 px-4">
-    <h2 class="text-3xl font-bold text-center mb-12">Ключови функции</h2>
-    <div class="max-w-6xl mx-auto grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-      <div class="border border-accent p-6 rounded-lg hover:shadow-lg transition">
-        <h3 class="text-xl font-semibold mb-2">Интеграция с борси</h3>
-        <p>Binance (крипто) & Alpaca (US акции) — лесно свързване чрез API.</p>
-      </div>
-      <div class="border border-accent p-6 rounded-lg hover:shadow-lg transition">
-        <h3 class="text-xl font-semibold mb-2">Visual Strategy Builder</h3>
-        <p>Drag-&-drop редактор и visual backtesting.</p>
-      </div>
-      <div class="border border-accent p-6 rounded-lg hover:shadow-lg transition">
-        <h3 class="text-xl font-semibold mb-2">Маркетплейс</h3>
-        <p>Готови стратегии от community и качване на свои ML модели.</p>
-      </div>
-      <div class="border border-accent p-6 rounded-lg hover:shadow-lg transition">
-        <h3 class="text-xl font-semibold mb-2">Backtesting Engine</h3>
-        <p>Исторически данни до 10+ години, всички timeframe-и.</p>
-      </div>
-      <div class="border border-accent p-6 rounded-lg hover:shadow-lg transition">
-        <h3 class="text-xl font-semibold mb-2">Paper Trading</h3>
-        <p>Симулирана търговия без риск за оптимизация на стратегии.</p>
-      </div>
-      <div class="border border-accent p-6 rounded-lg hover:shadow-lg transition">
-        <h3 class="text-xl font-semibold mb-2">Live Trading</h3>
-        <p>Автоматично изпращане на поръчки в реално време.</p>
-      </div>
+  <section id="register">
+    <h1 data-i18n="reg_title"></h1>
+    <p  data-i18n="reg_desc"></p>
+    <form>
+      <label data-i18n="reg_email"></label>
+      <input type="email" required>
+      <label data-i18n="reg_pass"></label>
+      <input type="password" required>
+      <button class="btn" type="submit" data-i18n="reg_btn"></button>
+    </form>
+  </section>
+  <section id="pricing">
+    <h2 data-i18n="price_title"></h2>
+    <div class="cards">
+      <div class="card"><h3>Free</h3><p data-i18n="price_free"></p></div>
+      <div class="card"><h3>Pro</h3><p data-i18n="price_pro"></p></div>
+      <div class="card"><h3>Enterprise</h3><p data-i18n="price_ent"></p></div>
     </div>
   </section>
-
-  <!-- Workflow -->
-  <section id="workflow" class="py-24 px-4">
-    <h2 class="text-3xl font-bold text-center mb-12">Как работи</h2>
-    <div class="max-w-4xl mx-auto grid gap-8 md:grid-cols-3 text-center">
-      <div>
-        <div class="text-5xl mb-2">1</div>
-        <h3 class="font-semibold">Свържи борсите</h3>
-        <p>Добави API ключовете за Binance & Alpaca.</p>
-      </div>
-      <div>
-        <div class="text-5xl mb-2">2</div>
-        <h3 class="font-semibold">Избери стратегия</h3>
-        <p>Визуален редактор или готови шаблони.</p>
-      </div>
-      <div>
-        <div class="text-5xl mb-2">3</div>
-        <h3 class="font-semibold">Пусни и следи</h3>
-        <p>Активирай бота и наблюдавай резултатите в реално време.</p>
-      </div>
+  <section id="settings">
+    <h2 data-i18n="set_title"></h2>
+    <form>
+      <label data-i18n="set_platform"></label>
+      <select><option>Binance</option><option>Alpaca</option></select>
+      <label data-i18n="set_asset"></label>
+      <select><option data-i18n="asset_crypto"></option><option data-i18n="asset_stock"></option></select>
+      <label data-i18n="set_strategy"></label>
+      <select><option>RSI</option><option>MACD</option><option>SMA</option></select>
+      <button class="btn" type="submit" data-i18n="set_save"></button>
+    </form>
+  </section>
+  <section id="dashboard">
+    <h2 data-i18n="dash_title"></h2>
+    <p  data-i18n="dash_desc"></p>
+    <div class="cards">
+      <div class="card"><h3>BTC-USDT</h3><p>+4.2 %</p></div>
+      <div class="card"><h3>AAPL</h3><p>-1.1 %</p></div>
+      <div class="card"><h3>ETH-USDT</h3><p>+2.8 %</p></div>
     </div>
   </section>
-
-  <!-- Pricing -->
-  <section id="pricing" class="py-24 px-4">
-    <h2 class="text-3xl font-bold text-center mb-12">Планове</h2>
-    <div class="max-w-5xl mx-auto grid gap-8 md:grid-cols-3 text-center">
-      <div class="border border-accent p-6 rounded-lg">
-        <h3 class="font-semibold mb-2">Starter</h3>
-        <p class="text-2xl font-bold mb-2">0 €</p>
-        <p>1 активен бот</p>
-        <p>Demo Binance</p>
-        <a href="#" class="mt-4 inline-block bg-accent text-primary px-4 py-2 rounded">Избери</a>
-      </div>
-      <div class="border border-accent bg-primary p-6 rounded-lg text-accent transform md:-translate-y-4">
-        <h3 class="font-semibold mb-2">Pro</h3>
-        <p class="text-2xl font-bold mb-2">49 €</p>
-        <p>10 бота</p>
-        <p>Live Binance & Alpaca</p>
-        <p>Backtest 10 години</p>
-        <a href="#" class="mt-4 inline-block border border-accent px-4 py-2 rounded">Избери</a>
-      </div>
-      <div class="border border-accent p-6 rounded-lg">
-        <h3 class="font-semibold mb-2">Enterprise</h3>
-        <p class="text-2xl font-bold mb-2">По договаряне</p>
-        <p>Неограничени ботове</p>
-        <p>SLA & White-label</p>
-        <a href="#contact" class="mt-4 inline-block bg-accent text-primary px-4 py-2 rounded">Контакт</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact -->
-  <section id="contact" class="py-24 px-4">
-    <h2 class="text-3xl font-bold text-center mb-8">Свържи се с нас</h2>
-    <div class="max-w-md mx-auto">
-      <form action="mailto:info@jollytech.pro" method="post" enctype="text/plain" class="space-y-4">
-        <input type="text" name="name" required placeholder="Име"
-               class="w-full border border-accent px-3 py-2 rounded bg-primary text-text"/>
-        <input type="email" name="email" required placeholder="Имейл"
-               class="w-full border border-accent px-3 py-2 rounded bg-primary text-text"/>
-        <textarea name="message" rows="4" required placeholder="Съобщение"
-                  class="w-full border border-accent px-3 py-2 rounded bg-primary text-text"></textarea>
-        <button type="submit" class="w-full bg-accent text-primary px-4 py-2 rounded">Изпрати</button>
-      </form>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="text-center py-6 text-sm text-accent">
-    <p>&copy; 2025 JollyTech. All rights reserved.</p>
-  </footer>
-
+  <footer data-i18n="footer_txt"></footer>
+  <!-- === JS === -->
+  <script>
+    /* ---------- Преводи ---------- */
+    const T={
+      bg:{nav_login:"Вход",nav_register:"Регистрация",nav_pricing:"Цени",nav_settings:"Настройки",nav_dashboard:"Табло",
+          login_title:"Вход в системата",login_email:"Имейл",login_pass:"Парола",login_btn:"Вход",
+          reg_title:"Създай безплатен акаунт",reg_desc:"Регистрирай се и търгувай с AI ботове за крипто и акции.",
+          reg_email:"Имейл",reg_pass:"Парола",reg_btn:"Регистрация",
+          price_title:"Планове и цени",price_free:"0 лв/мес — 1 бот, демо",price_pro:"29 лв/мес — 5 бота, live",price_ent:"89 лв/мес — неограничени ботове",
+          set_title:"Настройка на бота",set_platform:"Платформа",set_asset:"Актив",asset_crypto:"Крипто",asset_stock:"Акции",
+          set_strategy:"Стратегия",set_save:"Запази",dash_title:"Dashboard",dash_desc:"Резултати в реално време",
+          footer_txt:"© 2025 JollyTech.pro — Всички права запазени"},
+      en:{nav_login:"Login",nav_register:"Register",nav_pricing:"Pricing",nav_settings:"Settings",nav_dashboard:"Dashboard",
+          login_title:"Sign in",login_email:"Email",login_pass:"Password",login_btn:"Login",
+          reg_title:"Create a Free Account",reg_desc:"Trade crypto & stocks with AI bots.",
+          reg_email:"Email",reg_pass:"Password",reg_btn:"Sign Up",
+          price_title:"Plans & Pricing",price_free:"Free — 1 bot, demo",price_pro:"$29/mo — 5 bots, live",price_ent:"$89/mo — unlimited bots",
+          set_title:"Bot Configuration",set_platform:"Platform",set_asset:"Asset",asset_crypto:"Crypto",asset_stock:"Stocks",
+          set_strategy:"Strategy",set_save:"Save",dash_title:"Dashboard",dash_desc:"Realtime results",
+          footer_txt:"© 2025 JollyTech.pro — All rights reserved"}
+    };
+    /* ---------- Превод ---------- */
+    function translate(lang){
+      const d=T[lang]||T.bg;
+      document.querySelectorAll('[data-i18n]').forEach(el=>{
+        const k=el.dataset.i18n;
+        if(d[k]) el.innerText=d[k];
+      });
+      document.documentElement.lang=lang;
+    }
+    /* ---------- Навигация ---------- */
+    document.querySelectorAll('header a[data-target]').forEach(a=>{
+      a.addEventListener('click',e=>{
+        const id=a.dataset.target;
+        document.querySelectorAll('section').forEach(s=>s.classList.remove('active'));
+        document.getElementById(id).classList.add('active');
+        window.scrollTo({top:0,behavior:'smooth'});
+      });
+    });
+    /* ---------- dropdown език ---------- */
+    document.getElementById('lang-select').addEventListener('change',e=>translate(e.target.value));
+    translate('bg'); /* стартов */
+  </script>
 </body>
 </html>
