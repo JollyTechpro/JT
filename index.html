@@ -4,18 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>JollyTech — Trading Bots</title>
-
-  <!-- Google Font: Nunito (rounded) -->
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-
   <style>
-    :root{
-      --bg:#0D1117;          /* тъмносин фон */
+    :root {
+      --bg:#0D1117;
       --text:#1DE9B6;
       --text-dark:#000000;
     }
-    *{box-sizing:border-box;margin:0;padding:0}
-    body{
+    * { box-sizing:border-box; margin:0; padding:0 }
+    body {
       font-family:'Nunito',sans-serif;
       background:var(--bg);
       color:var(--text);
@@ -23,8 +20,7 @@
       display:flex;
       flex-direction:column;
     }
-    /* header */
-    header{
+    header {
       display:flex;
       align-items:center;
       justify-content:space-between;
@@ -33,19 +29,26 @@
       background:var(--bg);
       border-bottom:1px solid var(--text);
     }
-    /* ляв блок: лого + име + меню */
-    .left-group{
+    .left-group {
       display:flex;
       align-items:center;
       gap:.85rem;
       flex-wrap:wrap;
     }
-    .left-group img{height:45px;width:auto}
-    .brand{
+    .left-group .logo-title {
+      display:flex;
+      align-items:center;
+      gap:.6rem;
+    }
+    .left-group img {
+      height:42px;
+      width:auto;
+    }
+    .brand {
       font-size:1.5rem;
       font-weight:700;
     }
-    .left-group a{
+    .left-group a {
       border:1px solid var(--text);
       border-radius:6px;
       padding:.45rem .9rem;
@@ -55,15 +58,16 @@
       font-size:.9rem;
       cursor:pointer;
     }
-    .left-group a:hover{background:var(--text);color:var(--text-dark)}
-
-    /* десен блок – език */
-    .right-group{
+    .left-group a:hover {
+      background:var(--text);
+      color:var(--text-dark);
+    }
+    .right-group {
       display:flex;
       align-items:center;
       gap:.75rem;
     }
-    select{
+    select {
       border:1px solid var(--text);
       border-radius:6px;
       padding:.45rem .9rem;
@@ -77,165 +81,31 @@
       background-position:right .4rem center;
       padding-right:1.8rem;
     }
-    select:hover{background:var(--text);color:var(--text-dark)}
-
-    /* секции */
-    section{display:none;padding:3rem 1.5rem;text-align:center;max-width:960px;margin:0 auto}
-    section.active{display:block}
-    h1,h2{margin-bottom:1.2rem}
-    .btn{
-      display:inline-block;
+    select:hover {
       background:var(--text);
       color:var(--text-dark);
-      padding:.8rem 1.6rem;
-      border-radius:8px;
-      font-weight:700;
-      text-decoration:none;
-      margin-top:1.2rem;
-    }
-    /* карти / форми */
-    .cards{display:flex;flex-wrap:wrap;justify-content:center;gap:1.5rem}
-    .card{border:1px solid var(--text);border-radius:10px;padding:1.5rem;width:280px}
-    form{max-width:400px;margin:0 auto;text-align:left}
-    form label{display:block;margin:1rem 0 .3rem}
-    form input,form select{
-      width:100%;padding:.6rem;border:1px solid var(--text);border-radius:6px;
-      background:transparent;color:var(--text);
-    }
-    form button{margin-top:1.2rem}
-    footer{margin-top:auto;text-align:center;padding:1.8rem;font-size:.85rem;opacity:.65}
-    @media(max-width:640px){
-      .left-group{justify-content:center}
     }
   </style>
 </head>
 <body>
-
-  <!-- === HEADER === -->
   <header>
     <div class="left-group">
-      <img src="logo.png" alt="Logo">
-      <span class="brand">JollyTech</span>
-
-      <a data-target="login"    data-i18n="nav_login"></a>
-      <a data-target="register" data-i18n="nav_register"></a>
-      <a data-target="pricing"  data-i18n="nav_pricing"></a>
-      <a data-target="settings" data-i18n="nav_settings"></a>
-      <a data-target="dashboard"data-i18n="nav_dashboard"></a>
+      <div class="logo-title">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAA..." alt="JollyTech Logo">
+        <span class="brand">JollyTech</span>
+      </div>
+      <a data-target="login" data-i18n="nav_login">Вход</a>
+      <a data-target="register" data-i18n="nav_register">Регистрация</a>
+      <a data-target="pricing" data-i18n="nav_pricing">Цени</a>
+      <a data-target="settings" data-i18n="nav_settings">Настройки</a>
+      <a data-target="dashboard" data-i18n="nav_dashboard">Табло</a>
     </div>
-
     <div class="right-group">
       <select id="lang-select">
-        <option value="bg">BG</option><option value="en">EN</option><option value="de">DE</option>
-        <option value="es">ES</option><option value="fr">FR</option><option value="tr">TR</option>
-        <option value="ro">RO</option><option value="ru">RU</option><option value="gr">GR</option>
-        <option value="it">IT</option>
+        <option value="bg">BG</option>
+        <option value="en">EN</option>
       </select>
     </div>
   </header>
-
-  <!-- === СЕКЦИИ === -->
-  <section id="login" class="active">
-    <h1 data-i18n="login_title"></h1>
-    <form>
-      <label data-i18n="login_email"></label>
-      <input type="email" required>
-      <label data-i18n="login_pass"></label>
-      <input type="password" required>
-      <button class="btn" type="submit" data-i18n="login_btn"></button>
-    </form>
-  </section>
-
-  <section id="register">
-    <h1 data-i18n="reg_title"></h1>
-    <p  data-i18n="reg_desc"></p>
-    <form>
-      <label data-i18n="reg_email"></label>
-      <input type="email" required>
-      <label data-i18n="reg_pass"></label>
-      <input type="password" required>
-      <button class="btn" type="submit" data-i18n="reg_btn"></button>
-    </form>
-  </section>
-
-  <section id="pricing">
-    <h2 data-i18n="price_title"></h2>
-    <div class="cards">
-      <div class="card"><h3>Free</h3><p data-i18n="price_free"></p></div>
-      <div class="card"><h3>Pro</h3><p data-i18n="price_pro"></p></div>
-      <div class="card"><h3>Enterprise</h3><p data-i18n="price_ent"></p></div>
-    </div>
-  </section>
-
-  <section id="settings">
-    <h2 data-i18n="set_title"></h2>
-    <form>
-      <label data-i18n="set_platform"></label>
-      <select><option>Binance</option><option>Alpaca</option></select>
-      <label data-i18n="set_asset"></label>
-      <select><option data-i18n="asset_crypto"></option><option data-i18n="asset_stock"></option></select>
-      <label data-i18n="set_strategy"></label>
-      <select><option>RSI</option><option>MACD</option><option>SMA</option></select>
-      <button class="btn" type="submit" data-i18n="set_save"></button>
-    </form>
-  </section>
-
-  <section id="dashboard">
-    <h2 data-i18n="dash_title"></h2>
-    <p  data-i18n="dash_desc"></p>
-    <div class="cards">
-      <div class="card"><h3>BTC-USDT</h3><p>+4.2 %</p></div>
-      <div class="card"><h3>AAPL</h3><p>-1.1 %</p></div>
-      <div class="card"><h3>ETH-USDT</h3><p>+2.8 %</p></div>
-    </div>
-  </section>
-
-  <footer data-i18n="footer_txt"></footer>
-
-  <!-- === JS === -->
-  <script>
-    /* ---------- Преводи ---------- */
-    const T={
-      bg:{nav_login:"Вход",nav_register:"Регистрация",nav_pricing:"Цени",nav_settings:"Настройки",nav_dashboard:"Табло",
-          login_title:"Вход в системата",login_email:"Имейл",login_pass:"Парола",login_btn:"Вход",
-          reg_title:"Създай безплатен акаунт",reg_desc:"Регистрирай се и търгувай с AI ботове за крипто и акции.",
-          reg_email:"Имейл",reg_pass:"Парола",reg_btn:"Регистрация",
-          price_title:"Планове и цени",price_free:"0 лв/мес — 1 бот, демо",price_pro:"29 лв/мес — 5 бота, live",price_ent:"89 лв/мес — неограничени ботове",
-          set_title:"Настройка на бота",set_platform:"Платформа",set_asset:"Актив",asset_crypto:"Крипто",asset_stock:"Акции",
-          set_strategy:"Стратегия",set_save:"Запази",dash_title:"Dashboard",dash_desc:"Резултати в реално време",
-          footer_txt:"© 2025 JollyTech.pro — Всички права запазени"},
-      en:{nav_login:"Login",nav_register:"Register",nav_pricing:"Pricing",nav_settings:"Settings",nav_dashboard:"Dashboard",
-          login_title:"Sign in",login_email:"Email",login_pass:"Password",login_btn:"Login",
-          reg_title:"Create a Free Account",reg_desc:"Trade crypto & stocks with AI bots.",
-          reg_email:"Email",reg_pass:"Password",reg_btn:"Sign Up",
-          price_title:"Plans & Pricing",price_free:"Free — 1 bot, demo",price_pro:"$29/mo — 5 bots, live",price_ent:"$89/mo — unlimited bots",
-          set_title:"Bot Configuration",set_platform:"Platform",set_asset:"Asset",asset_crypto:"Crypto",asset_stock:"Stocks",
-          set_strategy:"Strategy",set_save:"Save",dash_title:"Dashboard",dash_desc:"Realtime results",
-          footer_txt:"© 2025 JollyTech.pro — All rights reserved"}
-      /* (Добави останалите езици при нужда) */
-    };
-
-    /* ---------- Превод ---------- */
-    function translate(lang){
-      const d=T[lang]||T.bg;
-      document.querySelectorAll('[data-i18n]').forEach(el=>{
-        const k=el.dataset.i18n;
-        if(d[k]) el.innerText=d[k];
-      });
-      document.documentElement.lang=lang;
-    }
-    /* ---------- Навигация ---------- */
-    document.querySelectorAll('header a[data-target]').forEach(a=>{
-      a.addEventListener('click',()=>{
-        const id=a.dataset.target;
-        document.querySelectorAll('section').forEach(s=>s.classList.remove('active'));
-        document.getElementById(id).classList.add('active');
-        window.scrollTo({top:0,behavior:'smooth'});
-      });
-    });
-    /* ---------- dropdown език ---------- */
-    document.getElementById('lang-select').addEventListener('change',e=>translate(e.target.value));
-    translate('bg'); /* стартов */
-  </script>
 </body>
 </html>
