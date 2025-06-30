@@ -6,39 +6,39 @@
   <title>JollyTech — Trading Bots</title>
 
   <!-- === СТИЛ === -->
-  <style>
-    :root{
-      --bg:#0A0F2C;
-      --text:#1DE9B6;
-      --text-dark:#0A0F2C;
-    }
-    *{box-sizing:border-box;margin:0;padding:0}
-    body{font-family:'Segoe UI',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;display:flex;flex-direction:column}
-    /* header */
-    header{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:1rem 2rem;background:rgba(10,15,44,.95);border-bottom:1px solid var(--text)}
-    .nav-left,.nav-right{display:flex;align-items:center;gap:.75rem;flex-wrap:wrap}
-    header a,header select{border:1px solid var(--text);border-radius:5px;padding:.45rem .9rem;background:transparent;color:var(--text);text-decoration:none;font-size:.9rem;cursor:pointer}
-    header a:hover,header select:hover{background:var(--text);color:var(--text-dark)}
-    header select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg fill='%231DE9B6' height='12' viewBox='0 0 24 24' width='12' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right .4rem center;padding-right:1.8rem}
-    /* logo */
-    .logo-box{flex:1 1 100%;display:flex;justify-content:center;padding:2rem 0 1rem}
-    .logo-box img{width:320px;max-width:100%;height:auto}
-    /* sections */
-    section{display:none;padding:3rem 1.5rem;text-align:center;max-width:960px;margin:0 auto}
-    section.active{display:block}
-    h1,h2{margin-bottom:1.2rem}
-    .btn{display:inline-block;background:var(--text);color:var(--text-dark);padding:.8rem 1.6rem;border-radius:8px;font-weight:bold;text-decoration:none;margin-top:1.2rem}
-    /* cards & forms */
-    .cards{display:flex;flex-wrap:wrap;justify-content:center;gap:1.5rem}
-    .card{border:1px solid var(--text);border-radius:10px;padding:1.5rem;width:280px}
-    form{max-width:400px;margin:0 auto;text-align:left}
-    form label{display:block;margin:1rem 0 .3rem}
-    form input,form select{width:100%;padding:.6rem;border:1px solid var(--text);border-radius:6px;background:transparent;color:var(--text)}
-    form button{margin-top:1.2rem}
-    /* footer */
-    footer{margin-top:auto;text-align:center;padding:1.8rem;font-size:.85rem;opacity:.65}
-    /* responsive */
-    @media(max-width:640px){.logo-box img{width:220px}}
+:root{
+  --bg:#000000;
+  --text:#1DE9B6;
+  --text-dark:#000000;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;display:flex;flex-direction:column}
+/* header */
+header{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:1rem 2rem;background:rgba(0,0,0,.95);border-bottom:1px solid var(--text)}
+.nav-left,.nav-right{display:flex;align-items:center;gap:.75rem;flex-wrap:wrap}
+header a,header select{border:1px solid var(--text);border-radius:5px;padding:.45rem .9rem;background:transparent;color:var(--text);text-decoration:none;font-size:.9rem;cursor:pointer}
+header a:hover,header select:hover{background:var(--text);color:var(--text-dark)}
+header select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg fill='%231DE9B6' height='12' viewBox='0 0 24 24' width='12' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right .4rem center;padding-right:1.8rem}
+/* logo */
+.logo-box{flex:1 1 100%;display:flex;justify-content:center;padding:2rem 0 1rem}
+.logo-box img{width:320px;max-width:100%;height:auto}
+/* sections */
+section{display:none;padding:3rem 1.5rem;text-align:center;max-width:960px;margin:0 auto}
+section.active{display:block}
+h1,h2{margin-bottom:1.2rem}
+.btn{display:inline-block;background:var(--text);color:var(--text-dark);padding:.8rem 1.6rem;border-radius:8px;font-weight:bold;text-decoration:none;margin-top:1.2rem}
+/* cards & forms */
+.cards{display:flex;flex-wrap:wrap;justify-content:center;gap:1.5rem}
+.card{border:1px solid var(--text);border-radius:10px;padding:1.5rem;width:280px}
+form{max-width:400px;margin:0 auto;text-align:left}
+form label{display:block;margin:1rem 0 .3rem}
+form input,form select{width:100%;padding:.6rem;border:1px solid var(--text);border-radius:6px;background:transparent;color:var(--text)}
+form button{margin-top:1.2rem}
+/* footer */
+footer{margin-top:auto;text-align:center;padding:1.8rem;font-size:.85rem;opacity:.65}
+/* responsive */
+@media(max-width:640px){.logo-box img{width:220px}}
+
   </style>
 </head>
 <body>
