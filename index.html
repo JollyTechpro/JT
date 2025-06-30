@@ -1,130 +1,137 @@
 <!DOCTYPE html>
 <html lang="bg">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>JollyTech — Трейдинг Ботове</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>JollyTech — Trading Bots</title>
+
+  <!-- === СТИЛ === -->
   <style>
-    body {
-      margin: 0;
-      background-color: #0A0F2C;
-      color: #1DE9B6;
-      font-family: 'Segoe UI', sans-serif;
+    :root{
+      --bg:#0A0F2C;
+      --text:#1DE9B6;
+      --text-dark:#0A0F2C;
     }
-
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 2rem;
-      background: rgba(10, 15, 44, 0.95);
-      border-bottom: 1px solid #1DE9B6;
-      flex-wrap: wrap;
-    }
-
-    .logo {
-      text-align: center;
-      flex: 1 0 100%;
-      margin-top: 1rem;
-    }
-
-    .logo img {
-      height: 100px;
-      max-width: 250px;
-    }
-
-    nav {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      align-items: center;
-      margin-top: 1rem;
-    }
-
-    nav a {
-      text-decoration: none;
-      color: #1DE9B6;
-      padding: 0.5rem 1rem;
-      border: 1px solid #1DE9B6;
-      border-radius: 5px;
-      font-size: 0.95rem;
-    }
-
-    nav a:hover {
-      background-color: #1DE9B6;
-      color: #0A0F2C;
-    }
-
-    .section {
-      padding: 3rem 2rem;
-      text-align: center;
-    }
-
-    footer {
-      text-align: center;
-      padding: 2rem;
-      font-size: 0.9rem;
-      color: #1DE9B6;
-      opacity: 0.6;
-    }
-
-    @media (max-width: 768px) {
-      nav {
-        justify-content: center;
-      }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'Segoe UI',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;display:flex;flex-direction:column}
+    /* --- HEADER --- */
+    header{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:1rem 2rem;background:rgba(10,15,44,.95);border-bottom:1px solid var(--text)}
+    .nav-left,.nav-right{display:flex;align-items:center;gap:.75rem;flex-wrap:wrap}
+    header a,header select{border:1px solid var(--text);border-radius:5px;padding:.45rem .9rem;background:transparent;color:var(--text);text-decoration:none;font-size:.9rem;cursor:pointer}
+    header a:hover,header select:hover{background:var(--text);color:var(--text-dark)}
+    header select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg fill='%231DE9B6' height='12' viewBox='0 0 24 24' width='12' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right .4rem center;padding-right:1.8rem}
+    /* --- LOGO --- */
+    .logo-box{flex:1 1 100%;text-align:center;margin-top:1rem}
+    .logo-box img{height:150px;max-width:320px;width:auto}
+    /* --- SECTIONS --- */
+    section{display:none;padding:3rem 1.5rem;text-align:center;max-width:960px;margin:0 auto}
+    section.active{display:block}
+    h1,h2{margin-bottom:1.2rem}
+    .btn{display:inline-block;background:var(--text);color:var(--text-dark);padding:.8rem 1.6rem;border-radius:8px;font-weight:bold;text-decoration:none;margin-top:1.2rem}
+    /* --- Карти --- */
+    .cards{display:flex;flex-wrap:wrap;justify-content:center;gap:1.5rem}
+    .card{border:1px solid var(--text);border-radius:10px;padding:1.5rem;width:280px}
+    /* --- Форма --- */
+    form{max-width:400px;margin:0 auto;text-align:left}
+    form label{display:block;margin:1rem 0 .3rem}
+    form input,form select{width:100%;padding:.6rem;border:1px solid var(--text);border-radius:6px;background:transparent;color:var(--text)}
+    form button{margin-top:1.2rem}
+    /* --- FOOTER --- */
+    footer{margin-top:auto;text-align:center;padding:1.8rem;font-size:.85rem;opacity:.65}
+    /* --- Responsive --- */
+    @media(max-width:640px){
+      .logo-box img{height:110px}
     }
   </style>
 </head>
 <body>
 
+  <!-- === HEADER === -->
   <header>
-    <nav>
-      <a href="#register">Регистрация</a>
-      <a href="#pricing">Планове и Цени</a>
-      <a href="#settings">Настройка на Бот</a>
-      <a href="#dashboard">Dashboard</a>
-    </nav>
-    <nav>
-      <a href="?lang=bg">BG</a>
-      <a href="?lang=en">EN</a>
-      <a href="?lang=de">DE</a>
-      <a href="?lang=es">ES</a>
-      <a href="?lang=fr">FR</a>
-      <a href="?lang=tr">TR</a>
-      <a href="?lang=ro">RO</a>
-      <a href="?lang=ru">RU</a>
-      <a href="?lang=gr">GR</a>
-      <a href="?lang=it">IT</a>
-    </nav>
-    <div class="logo">
-      <img src="logo.png" alt="JollyTech Logo">
+    <div class="nav-left">
+      <a data-target="register">Регистрация</a>
+      <a data-target="pricing">Планове и цени</a>
+      <a data-target="settings">Настройка на бот</a>
+      <a data-target="dashboard">Dashboard</a>
+    </div>
+
+    <div class="nav-right">
+      <select id="lang-select">
+        <option value="bg">BG</option><option value="en">EN</option><option value="de">DE</option>
+        <option value="es">ES</option><option value="fr">FR</option><option value="tr">TR</option>
+        <option value="ro">RO</option><option value="ru">RU</option><option value="gr">GR</option>
+        <option value="it">IT</option>
+      </select>
+    </div>
+
+    <div class="logo-box">
+      <img src="logo.png" alt="JollyTech logo">
     </div>
   </header>
 
-  <section class="section" id="register">
-    <h1>Започни да търгуваш с AI бот</h1>
-    <p>Регистрирай се и управлявай стратегии с RSI, MACD, крипто, акции и други.</p>
-    <a href="#" class="btn">Създай профил</a>
+  <!-- === СЕКЦИИ === -->
+  <section id="register" class="active">
+    <h1>Създай безплатен акаунт</h1>
+    <form>
+      <label>Имейл</label>
+      <input type="email" placeholder="you@example.com" required>
+      <label>Парола</label>
+      <input type="password" placeholder="********" required>
+      <button class="btn" type="submit">Регистрация</button>
+    </form>
   </section>
 
-  <section class="section" id="pricing">
+  <section id="pricing">
     <h2>Планове и цени</h2>
-    <p>Избери подходящия план според нуждите си – от безплатен до enterprise.</p>
+    <div class="cards">
+      <div class="card"><h3>Free</h3><p>0 лв / месец</p><p>1 бот, демо пазари</p></div>
+      <div class="card"><h3>Pro</h3><p>29 лв / месец</p><p>5 бота, живи пазари</p></div>
+      <div class="card"><h3>Enterprise</h3><p>89 лв / месец</p><p>Неограничени ботове, приоритетна поддръжка</p></div>
+    </div>
   </section>
 
-  <section class="section" id="settings">
-    <h2>Настройки на бота</h2>
-    <p>Избери пазар (Binance, Alpaca), стратегия (RSI, SMA, MACD), тип актив (крипто / акции) и още.</p>
+  <section id="settings">
+    <h2>Настройка на бота</h2>
+    <form>
+      <label>Платформа</label>
+      <select><option>Binance</option><option>Alpaca</option></select>
+      <label>Актив</label>
+      <select><option>Крипто</option><option>Акции</option></select>
+      <label>Стратегия</label>
+      <select><option>RSI</option><option>MACD</option><option>SMA</option></select>
+      <button class="btn" type="submit">Запази настройките</button>
+    </form>
   </section>
 
-  <section class="section" id="dashboard">
+  <section id="dashboard">
     <h2>Dashboard</h2>
-    <p>Следи текущите позиции, ботове в реално време и резултати от търговията.</p>
+    <p>Тук ще виждаш резултати в реално време (примерни данни).</p>
+    <div class="cards">
+      <div class="card"><h3>BTC-USDT</h3><p>+4.2 %</p></div>
+      <div class="card"><h3>AAPL</h3><p>-1.1 %</p></div>
+      <div class="card"><h3>ETH-USDT</h3><p>+2.8 %</p></div>
+    </div>
   </section>
 
   <footer>
-    © 2025 JollyTech.pro | Всички права запазени
+    © 2025 JollyTech.pro — Всички права запазени
   </footer>
 
+  <!-- === JS за навигация === -->
+  <script>
+    // показване/скриване на секции
+    document.querySelectorAll('header a[data-target]').forEach(el=>{
+      el.addEventListener('click',e=>{
+        const id=e.target.dataset.target;
+        document.querySelectorAll('section').forEach(s=>s.classList.remove('active'));
+        document.getElementById(id).classList.add('active');
+        window.scrollTo({top:0,behavior:'smooth'});
+      });
+    });
+    // езиков dropdown (placeholder – реална локализация не е имплементирана)
+    document.getElementById('lang-select').addEventListener('change',e=>{
+      alert('Смяната на език ще бъде налична скоро ('+e.target.value.toUpperCase()+')');
+    });
+  </script>
 </body>
 </html>
