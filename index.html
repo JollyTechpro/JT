@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="bg">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>JollyTech — Търговски Ботове</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>JollyTech — Трейдинг Ботове</title>
   <style>
     body {
       margin: 0;
@@ -11,60 +11,55 @@
       color: #1DE9B6;
       font-family: 'Segoe UI', sans-serif;
     }
+
     header {
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
       padding: 1rem 2rem;
-      background: rgba(10,15,44,0.9);
-      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      background: rgba(10, 15, 44, 0.95);
+      border-bottom: 1px solid #1DE9B6;
+      flex-wrap: wrap;
     }
-    header img {
-      height: 40px;
+
+    .logo {
+      text-align: center;
+      flex: 1 0 100%;
+      margin-top: 1rem;
     }
+
+    .logo img {
+      height: 100px;
+      max-width: 250px;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      margin-top: 1rem;
+    }
+
     nav a {
-      margin-left: 20px;
+      text-decoration: none;
       color: #1DE9B6;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    nav a:hover {
-      text-decoration: underline;
-    }
-    .hero {
-      text-align: center;
-      padding: 5rem 2rem;
-    }
-    .hero h1 {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-    }
-    .hero p {
-      max-width: 600px;
-      margin: 0 auto 2rem;
-      font-size: 1.2rem;
-    }
-    .btn {
-      display: inline-block;
-      background: #1DE9B6;
-      color: #0A0F2C;
-      padding: 0.8rem 1.5rem;
-      font-weight: bold;
-      border-radius: 8px;
-      text-decoration: none;
-    }
-    .section {
-      padding: 4rem 2rem;
-      text-align: center;
-    }
-    .card {
+      padding: 0.5rem 1rem;
       border: 1px solid #1DE9B6;
-      border-radius: 10px;
-      padding: 1.5rem;
-      margin: 1rem;
-      max-width: 300px;
-      display: inline-block;
+      border-radius: 5px;
+      font-size: 0.95rem;
     }
+
+    nav a:hover {
+      background-color: #1DE9B6;
+      color: #0A0F2C;
+    }
+
+    .section {
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+
     footer {
       text-align: center;
       padding: 2rem;
@@ -72,66 +67,63 @@
       color: #1DE9B6;
       opacity: 0.6;
     }
+
+    @media (max-width: 768px) {
+      nav {
+        justify-content: center;
+      }
+    }
   </style>
 </head>
 <body>
 
   <header>
-    <div>
+    <nav>
+      <a href="#register">Регистрация</a>
+      <a href="#pricing">Планове и Цени</a>
+      <a href="#settings">Настройка на Бот</a>
+      <a href="#dashboard">Dashboard</a>
+    </nav>
+    <nav>
+      <a href="?lang=bg">BG</a>
+      <a href="?lang=en">EN</a>
+      <a href="?lang=de">DE</a>
+      <a href="?lang=es">ES</a>
+      <a href="?lang=fr">FR</a>
+      <a href="?lang=tr">TR</a>
+      <a href="?lang=ro">RO</a>
+      <a href="?lang=ru">RU</a>
+      <a href="?lang=gr">GR</a>
+      <a href="?lang=it">IT</a>
+    </nav>
+    <div class="logo">
       <img src="logo.png" alt="JollyTech Logo">
     </div>
-    <nav>
-      <a href="#features">Функции</a>
-      <a href="#pricing">Цени</a>
-      <a href="#contact">Контакт</a>
-    </nav>
   </header>
 
-  <section class="hero">
-    <h1>JollyTech — Ботове за Търговия</h1>
-    <p>AI-базирани ботове за автоматизирана търговия с крипто и акции. Работят 24/7 и ти носят резултати, докато спиш.</p>
-    <a href="#pricing" class="btn">Виж плановете</a>
-  </section>
-
-  <section class="section" id="features">
-    <h2>Функции</h2>
-    <div class="card">
-      <h3>AI Търговия</h3>
-      <p>Реагира моментално на пазарните сигнали.</p>
-    </div>
-    <div class="card">
-      <h3>Backtesting</h3>
-      <p>Проверка на стратегии с реални исторически данни.</p>
-    </div>
-    <div class="card">
-      <h3>API към борси</h3>
-      <p>Интеграция с Binance, Alpaca, и други.</p>
-    </div>
+  <section class="section" id="register">
+    <h1>Започни да търгуваш с AI бот</h1>
+    <p>Регистрирай се и управлявай стратегии с RSI, MACD, крипто, акции и други.</p>
+    <a href="#" class="btn">Създай профил</a>
   </section>
 
   <section class="section" id="pricing">
-    <h2>Цени</h2>
-    <div class="card">
-      <h3>Free</h3>
-      <p>0 лв / месец<br>1 бот, без API, само демо</p>
-    </div>
-    <div class="card">
-      <h3>Pro</h3>
-      <p>29 лв / месец<br>5 бота, Binance, live trading</p>
-    </div>
-    <div class="card">
-      <h3>Enterprise</h3>
-      <p>89 лв / месец<br>Неограничени ботове, 24/7 поддръжка</p>
-    </div>
+    <h2>Планове и цени</h2>
+    <p>Избери подходящия план според нуждите си – от безплатен до enterprise.</p>
   </section>
 
-  <section class="section" id="contact">
-    <h2>Контакт</h2>
-    <p>Пиши ни на <strong>support@jollytech.pro</strong></p>
+  <section class="section" id="settings">
+    <h2>Настройки на бота</h2>
+    <p>Избери пазар (Binance, Alpaca), стратегия (RSI, SMA, MACD), тип актив (крипто / акции) и още.</p>
+  </section>
+
+  <section class="section" id="dashboard">
+    <h2>Dashboard</h2>
+    <p>Следи текущите позиции, ботове в реално време и резултати от търговията.</p>
   </section>
 
   <footer>
-    © 2025 JollyTech. Всички права запазени.
+    © 2025 JollyTech.pro | Всички права запазени
   </footer>
 
 </body>
