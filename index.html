@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>JollyTech — Trading Bots</title>
 
-  <!-- Google Font: Nunito (по-заоблен) -->
+  <!-- Google Font: Nunito (rounded) -->
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 
   <style>
@@ -215,6 +215,7 @@
       /* (Добави останалите езици при нужда) */
     };
 
+    /* ---------- Превод ---------- */
     function translate(lang){
       const d=T[lang]||T.bg;
       document.querySelectorAll('[data-i18n]').forEach(el=>{
@@ -223,6 +224,7 @@
       });
       document.documentElement.lang=lang;
     }
+    /* ---------- Навигация ---------- */
     document.querySelectorAll('header a[data-target]').forEach(a=>{
       a.addEventListener('click',()=>{
         const id=a.dataset.target;
@@ -231,6 +233,7 @@
         window.scrollTo({top:0,behavior:'smooth'});
       });
     });
+    /* ---------- dropdown език ---------- */
     document.getElementById('lang-select').addEventListener('change',e=>translate(e.target.value));
     translate('bg'); /* стартов */
   </script>
