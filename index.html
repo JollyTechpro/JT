@@ -1,111 +1,166 @@
-# Запазваме финалната версия като файл
-index_html = """
 <!DOCTYPE html>
 <html lang="bg">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>JollyTech — Trading Bots</title>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg: #0A0F2C;
-      --text: #1DE9B6;
-      --text-dark: #000000;
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>JollyTech – Automated Trading Platform</title>
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#0e1a2b',      // тъмно синьо
+            accent: '#00cba9',       // тюркоазено
+            accentLight: '#4fe8cb',
+            text: '#00cba9'
+          }
+        }
+      }
     }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: 'Outfit', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-    header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      padding: 1rem 2rem;
-      background: rgba(10, 15, 44, 0.95);
-      border-bottom: 1px solid var(--text);
-    }
-    .nav-left, .nav-right {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      flex-wrap: wrap;
-    }
-    header a, header select {
-      border: 1px solid var(--text);
-      border-radius: 5px;
-      padding: 0.45rem 0.9rem;
-      background: transparent;
-      color: var(--text);
-      text-decoration: none;
-      font-size: 0.9rem;
-      cursor: pointer;
-    }
-    header a:hover, header select:hover {
-      background: var(--text);
-      color: var(--text-dark);
-    }
-    header select {
-      appearance: none;
-      background-image: url("data:image/svg+xml,%3Csvg fill='%231DE9B6' height='12' viewBox='0 0 24 24' width='12' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: right 0.4rem center;
-      padding-right: 1.8rem;
-    }
-    .logo-box {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-    .logo-box img {
-      width: 64px;
-      height: 64px;
-    }
-    .logo-title {
-      font-size: 2rem;
-      font-weight: 800;
-    }
-  </style>
+  </script>
+  <style>body { font-family: 'Inter', sans-serif; }</style>
 </head>
-<body>
-  <header>
-    <div class="logo-box">
-      <img src="logo.png" alt="Logo" />
-      <span class="logo-title">JollyTech</span>
-    </div>
-    <div class="nav-left">
-      <a href="#">Вход</a>
-      <a href="#">Регистрация</a>
-      <a href="#">Цени</a>
-      <a href="#">Настройки</a>
-      <a href="#">Dashboard</a>
-    </div>
-    <div class="nav-right">
-      <select>
-        <option>BG</option>
-        <option>EN</option>
-        <option>DE</option>
-        <option>ES</option>
-        <option>FR</option>
-        <option>TR</option>
-        <option>RO</option>
-        <option>RU</option>
-        <option>GR</option>
-        <option>IT</option>
+<body class="bg-primary text-text antialiased">
+
+  <!-- Navbar -->
+  <header class="bg-primary/80 backdrop-blur-sm sticky top-0 z-20">
+    <div class="max-w-7xl mx-auto flex items-center justify-between px-4 py-3">
+      <!-- Лого + заглавие -->
+      <a href="#" class="flex items-center space-x-2">
+        <img src="logo/logo.png" alt="JollyTech" class="h-8 w-8"/>
+        <span class="text-xl font-semibold">JollyTech</span>
+      </a>
+      <nav class="hidden md:flex space-x-6 text-sm font-medium">
+        <a href="#features" class="hover:text-accentLight">Функции</a>
+        <a href="#workflow" class="hover:text-accentLight">Как работи</a>
+        <a href="#pricing" class="hover:text-accentLight">Планове</a>
+        <a href="#contact" class="hover:text-accentLight">Контакт</a>
+      </nav>
+      <select id="langSelect" class="border border-accent rounded px-2 py-1 text-sm bg-primary focus:outline-none">
+        <option value="bg">BG</option>
+        <option value="en">EN</option>
       </select>
     </div>
   </header>
+
+  <!-- Hero -->
+  <section class="flex flex-col items-center justify-center text-center py-32 px-4">
+    <img src="logo/logo.png" alt="JollyTech Logo" class="h-24 w-24 mb-6"/>
+    <h1 class="text-4xl md:text-6xl font-bold mb-4">Автоматизирана търговия с крипто и акции</h1>
+    <p class="text-lg mb-8 max-w-2xl mx-auto">Създавай, тествай и стартирай ботове за Binance & Alpaca — без писане на код.</p>
+    <a href="#workflow" class="bg-accent text-primary px-6 py-3 rounded-md hover:bg-accentLight transition font-medium">
+      Започни безплатно
+    </a>
+  </section>
+
+  <!-- Features -->
+  <section id="features" class="py-24 px-4">
+    <h2 class="text-3xl font-bold text-center mb-12">Ключови функции</h2>
+    <div class="max-w-6xl mx-auto grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+      <div class="border border-accent p-6 rounded-lg hover:shadow-lg transition">
+        <h3 class="text-xl font-semibold mb-2">Интеграция с борси</h3>
+        <p>Binance (крипто) & Alpaca (US акции) — лесно свързване чрез API.</p>
+      </div>
+      <div class="border border-accent p-6 rounded-lg hover:shadow-lg transition">
+        <h3 class="text-xl font-semibold mb-2">Visual Strategy Builder</h3>
+        <p>Drag-&-drop редактор и visual backtesting.</p>
+      </div>
+      <div class="border border-accent p-6 rounded-lg hover:shadow-lg transition">
+        <h3 class="text-xl font-semibold mb-2">Маркетплейс</h3>
+        <p>Готови стратегии от community и качване на свои ML модели.</p>
+      </div>
+      <div class="border border-accent p-6 rounded-lg hover:shadow-lg transition">
+        <h3 class="text-xl font-semibold mb-2">Backtesting Engine</h3>
+        <p>Исторически данни до 10+ години, всички timeframe-и.</p>
+      </div>
+      <div class="border border-accent p-6 rounded-lg hover:shadow-lg transition">
+        <h3 class="text-xl font-semibold mb-2">Paper Trading</h3>
+        <p>Симулирана търговия без риск за оптимизация на стратегии.</p>
+      </div>
+      <div class="border border-accent p-6 rounded-lg hover:shadow-lg transition">
+        <h3 class="text-xl font-semibold mb-2">Live Trading</h3>
+        <p>Автоматично изпращане на поръчки в реално време.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Workflow -->
+  <section id="workflow" class="py-24 px-4">
+    <h2 class="text-3xl font-bold text-center mb-12">Как работи</h2>
+    <div class="max-w-4xl mx-auto grid gap-8 md:grid-cols-3 text-center">
+      <div>
+        <div class="text-5xl mb-2">1</div>
+        <h3 class="font-semibold">Свържи борсите</h3>
+        <p>Добави API ключовете за Binance & Alpaca.</p>
+      </div>
+      <div>
+        <div class="text-5xl mb-2">2</div>
+        <h3 class="font-semibold">Избери стратегия</h3>
+        <p>Визуален редактор или готови шаблони.</p>
+      </div>
+      <div>
+        <div class="text-5xl mb-2">3</div>
+        <h3 class="font-semibold">Пусни и следи</h3>
+        <p>Активирай бота и наблюдавай резултатите в реално време.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section id="pricing" class="py-24 px-4">
+    <h2 class="text-3xl font-bold text-center mb-12">Планове</h2>
+    <div class="max-w-5xl mx-auto grid gap-8 md:grid-cols-3 text-center">
+      <div class="border border-accent p-6 rounded-lg">
+        <h3 class="font-semibold mb-2">Starter</h3>
+        <p class="text-2xl font-bold mb-2">0 €</p>
+        <p>1 активен бот</p>
+        <p>Demo Binance</p>
+        <a href="#" class="mt-4 inline-block bg-accent text-primary px-4 py-2 rounded">Избери</a>
+      </div>
+      <div class="border border-accent bg-primary p-6 rounded-lg text-accent transform md:-translate-y-4">
+        <h3 class="font-semibold mb-2">Pro</h3>
+        <p class="text-2xl font-bold mb-2">49 €</p>
+        <p>10 бота</p>
+        <p>Live Binance & Alpaca</p>
+        <p>Backtest 10 години</p>
+        <a href="#" class="mt-4 inline-block border border-accent px-4 py-2 rounded">Избери</a>
+      </div>
+      <div class="border border-accent p-6 rounded-lg">
+        <h3 class="font-semibold mb-2">Enterprise</h3>
+        <p class="text-2xl font-bold mb-2">По договаряне</p>
+        <p>Неограничени ботове</p>
+        <p>SLA & White-label</p>
+        <a href="#contact" class="mt-4 inline-block bg-accent text-primary px-4 py-2 rounded">Контакт</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="py-24 px-4">
+    <h2 class="text-3xl font-bold text-center mb-8">Свържи се с нас</h2>
+    <div class="max-w-md mx-auto">
+      <form action="mailto:info@jollytech.pro" method="post" enctype="text/plain" class="space-y-4">
+        <input type="text" name="name" required placeholder="Име"
+               class="w-full border border-accent px-3 py-2 rounded bg-primary text-text"/>
+        <input type="email" name="email" required placeholder="Имейл"
+               class="w-full border border-accent px-3 py-2 rounded bg-primary text-text"/>
+        <textarea name="message" rows="4" required placeholder="Съобщение"
+                  class="w-full border border-accent px-3 py-2 rounded bg-primary text-text"></textarea>
+        <button type="submit" class="w-full bg-accent text-primary px-4 py-2 rounded">Изпрати</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="text-center py-6 text-sm text-accent">
+    <p>&copy; 2025 JollyTech. All rights reserved.</p>
+  </footer>
+
 </body>
 </html>
-"""
-
-# Записваме файла
-output_path = Path("/mnt/data/index_jollytech_final.html")
-output_path.write_text(index_html, encoding="utf-8")
-output_path
