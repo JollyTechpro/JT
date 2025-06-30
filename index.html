@@ -10,7 +10,7 @@
 
   <style>
     :root{
-      --bg:#000000;
+      --bg:#0D1117;          /* тъмносин фон */
       --text:#1DE9B6;
       --text-dark:#000000;
     }
@@ -30,10 +30,10 @@
       justify-content:space-between;
       flex-wrap:wrap;
       padding:1rem 2rem;
-      background:rgba(0,0,0,.95);
+      background:var(--bg);
       border-bottom:1px solid var(--text);
     }
-    /* ляв блок: лого + меню */
+    /* ляв блок: лого + име + меню */
     .left-group{
       display:flex;
       align-items:center;
@@ -41,6 +41,10 @@
       flex-wrap:wrap;
     }
     .left-group img{height:45px;width:auto}
+    .brand{
+      font-size:1.5rem;
+      font-weight:700;
+    }
     .left-group a{
       border:1px solid var(--text);
       border-radius:6px;
@@ -52,14 +56,6 @@
       cursor:pointer;
     }
     .left-group a:hover{background:var(--text);color:var(--text-dark)}
-
-    /* център – JollyTech */
-    .brand{
-      font-size:1.5rem;
-      font-weight:700;
-      text-align:center;
-      flex:1 1 auto;
-    }
 
     /* десен блок – език */
     .right-group{
@@ -109,7 +105,6 @@
     form button{margin-top:1.2rem}
     footer{margin-top:auto;text-align:center;padding:1.8rem;font-size:.85rem;opacity:.65}
     @media(max-width:640px){
-      .brand{flex-basis:100%;margin:1rem 0}
       .left-group{justify-content:center}
     }
   </style>
@@ -120,14 +115,14 @@
   <header>
     <div class="left-group">
       <img src="logo.png" alt="Logo">
+      <span class="brand">JollyTech</span>
+
       <a data-target="login"    data-i18n="nav_login"></a>
       <a data-target="register" data-i18n="nav_register"></a>
       <a data-target="pricing"  data-i18n="nav_pricing"></a>
       <a data-target="settings" data-i18n="nav_settings"></a>
       <a data-target="dashboard"data-i18n="nav_dashboard"></a>
     </div>
-
-    <div class="brand">JollyTech</div>
 
     <div class="right-group">
       <select id="lang-select">
@@ -220,7 +215,6 @@
       /* (Добави останалите езици при нужда) */
     };
 
-    /* ---------- Превод ---------- */
     function translate(lang){
       const d=T[lang]||T.bg;
       document.querySelectorAll('[data-i18n]').forEach(el=>{
@@ -229,16 +223,14 @@
       });
       document.documentElement.lang=lang;
     }
-    /* ---------- Навигация ---------- */
     document.querySelectorAll('header a[data-target]').forEach(a=>{
-      a.addEventListener('click',e=>{
+      a.addEventListener('click',()=>{
         const id=a.dataset.target;
         document.querySelectorAll('section').forEach(s=>s.classList.remove('active'));
         document.getElementById(id).classList.add('active');
         window.scrollTo({top:0,behavior:'smooth'});
       });
     });
-    /* ---------- dropdown език ---------- */
     document.getElementById('lang-select').addEventListener('change',e=>translate(e.target.value));
     translate('bg'); /* стартов */
   </script>
