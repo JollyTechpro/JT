@@ -15,12 +15,12 @@
       theme: {
         extend: {
           colors: {
-            primary: '#0e1a2b',      /* Dark navy */
-            primaryLight: '#1f2d3d', /* Lighter navy */
-            accent: '#00cba9',       /* Turquoise accent */
-            accentLight: '#4fe8cb',  /* Light turquoise */
-            background: '#0e1a2b',   /* full-screen background */
-            text: '#e0e0e0'          /* Light gray text */
+            primary: '#0e1a2b',      // Dark navy
+            primaryLight: '#1f2d3d', // Lighter navy
+            accent: '#00cba9',       // Turquoise accent
+            accentLight: '#4fe8cb',  // Light turquoise
+            background: '#0e1a2b',   // full-screen background
+            text: '#e0e0e0'          // Light gray text
           }
         }
       }
@@ -35,7 +35,6 @@
   <header class="bg-primaryLight">
     <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
       <div class="flex items-center">
-        <!-- Правилен път до логото -->
         <img src="./logo.png" alt="JollyTech Logo" class="h-10 w-auto mr-2">
         <span class="text-accent text-2xl font-semibold">JollyTech</span>
       </div>
@@ -62,7 +61,7 @@
 
   <!-- Hero -->
   <section class="text-center py-32 px-4">
-    <img src="./logo.png.png" alt="JollyTech Logo" class="mx-auto h-20 w-auto mb-8">
+    <img src="./logo.png" alt="JollyTech Logo" class="mx-auto h-20 w-auto mb-8">
     <h1 data-i18n="heroTitle" class="text-4xl md:text-6xl font-bold mb-4">
       Автоматизирана търговия с крипто и акции
     </h1>
@@ -107,7 +106,111 @@
     </div>
   </section>
 
-  <!-- … останалите секции … -->
+  <!-- Workflow -->
+  <section id="workflow" class="py-24 px-4">
+    <h2 data-i18n="flowTitle" class="text-3xl font-bold text-center mb-12">Как работи</h2>
+    <div class="max-w-4xl mx-auto grid gap-8 md:grid-cols-3 text-center">
+      <div data-i18n-group="step1">
+        <div class="text-5xl mb-2">1</div>
+        <h3 data-i18n="title" class="font-semibold mb-2">Свържи борсите</h3>
+        <p data-i18n="desc">Добави API ключовете за Binance & Alpaca.</p>
+      </div>
+      <div data-i18n-group="step2">
+        <div class="text-5xl mb-2">2</div>
+        <h3 data-i18n="title" class="font-semibold mb-2">Избери стратегия</h3>
+        <p data-i18n="desc">Визуален редактор или готови шаблони.</p>
+      </div>
+      <div data-i18n-group="step3">
+        <div class="text-5xl mb-2">3</div>
+        <h3 data-i18n="title" class="font-semibold mb-2">Пусни и следи</h3>
+        <p data-i18n="desc">Активирай бота и наблюдавай резултатите в реално време.</p>
+      </div>
+    </div>
+  </section>
 
+  <!-- Pricing -->
+  <section id="pricing" class="py-24 px-4">
+    <h2 data-i18n="pricingTitle" class="text-3xl font-bold text-center mb-12">Планове</h2>
+    <div class="max-w-5xl mx-auto grid gap-8 md:grid-cols-3 text-center">
+      <div class="border border-accent rounded-lg p-6">
+        <h3 data-i18n="planStarter" class="font-semibold mb-2">Starter</h3>
+        <p class="text-2xl font-bold mb-2">0 €</p>
+        <p data-i18n="starter1">1 активен бот</p>
+        <p data-i18n="starter2">Demo Binance</p>
+        <a href="#"
+           class="mt-4 inline-block bg-accent hover:bg-accentLight text-primaryLight px-4 py-2 rounded">
+          Избери
+        </a>
+      </div>
+      <div class="border border-accent rounded-lg p-6 bg-primaryLight">
+        <h3 data-i18n="planPro" class="font-semibold mb-2">Pro</h3>
+        <p class="text-2xl font-bold mb-2">49 €</p>
+        <p data-i18n="pro1">10 бота</p>
+        <p data-i18n="pro2">Live Binance & Alpaca</p>
+        <p data-i18n="pro3">Backtest 10 години</p>
+        <a href="#"
+           class="mt-4 inline-block border border-accent text-accent px-4 py-2 rounded">
+          Избери
+        </a>
+      </div>
+      <div class="border border-accent rounded-lg p-6">
+        <h3 data-i18n="planEnt" class="font-semibold mb-2">Enterprise</h3>
+        <p data-i18n="entPrice" class="text-2xl font-bold mb-2">По договаряне</p>
+        <p data-i18n="ent1">Неограничени ботове</p>
+        <p data-i18n="ent2">SLA & White-label</p>
+        <a href="#contact"
+           class="mt-4 inline-block bg-accent hover:bg-accentLight text-primaryLight px-4 py-2 rounded">
+          Контакт
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="py-24 px-4">
+    <h2 data-i18n="contactTitle" class="text-3xl font-bold text-center mb-8">Свържи се с нас</h2>
+    <div class="max-w-md mx-auto">
+      <form action="mailto:info@jollytech.pro" method="post" enctype="text/plain" class="space-y-4">
+        <input type="text" name="name" required placeholder="Име"
+               class="w-full border border-accent px-3 py-2 rounded bg-primaryLight text-primaryLight focus:outline-none">
+        <input type="email" name="email" required placeholder="Имейл"
+               class="w-full border border-accent px-3 py-2 rounded bg-primaryLight text-primaryLight focus:outline-none">
+        <textarea name="message" rows="4" required placeholder="Съобщение"
+                  class="w-full border border-accent px-3 py-2 rounded bg-primaryLight text-primaryLight focus:outline-none"></textarea>
+        <button type="submit"
+                class="w-full bg-accent hover:bg-accentLight text-primaryLight px-4 py-2 rounded">
+          Изпрати
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-6 text-center text-sm text-accentLight border-t border-accent">
+    <p>&copy; 2025 JollyTech. All rights reserved.</p>
+  </footer>
+
+  <!-- i18n Script -->
+  <script>
+    // Пример, ако имаш нужда от преводи
+    const translations = {};
+    const select = document.getElementById('langSelect');
+    function translate(lang) {
+      const dict = translations[lang] || translations['en'] || {};
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (dict[key]) el.textContent = dict[key];
+      });
+      document.querySelectorAll('[data-i18n-group]').forEach(groupEl => {
+        const grp = groupEl.getAttribute('data-i18n-group');
+        groupEl.querySelectorAll('[data-i18n]').forEach(ch => {
+          const sub = `${grp}.${ch.getAttribute('data-i18n')}`;
+          if (dict[sub]) ch.textContent = dict[sub];
+        });
+      });
+    }
+    select.addEventListener('change', e => translate(e.target.value));
+    translate('bg');
+  </script>
 </body>
 </html>
